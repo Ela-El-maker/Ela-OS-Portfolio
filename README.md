@@ -1,32 +1,38 @@
-# ✨ Felo Ela | Portfolio ✨
+## Felo Ela | Portfolio OS
 
-#### 🔥 Try it online: [https://www.feloela.com/](https://www.feloela.com/)
+Interactive portfolio that emulates a desktop OS experience built with Next.js, Redux, and styled-components. Includes draggable windows, widgets, and a portfolio section showcasing projects and articles.
 
-#### 🔥 If you really liked the project, consider giving it a star ⭐
+### Live Demo
+- https://www.feloela.com/
 
-[![Follow Github](https://img.shields.io/github/followers/feloela.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/feloela)
+### Features
+- Desktop-like UI: windows, taskbar, start menu, system tray, widgets.
+- Portfolio content: highlighted projects, articles feed, resume, contact links.
+- Responsive and keyboard-friendly interactions.
 
-#### Feel Free to connect and say hi on any platforms!
+### Stack
+- Next.js (pages router) + React
+- Redux for global state
+- styled-components for theming
+- TypeScript
 
-[![Follow Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/feloela)
-[![Follow Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/feloela/)
+### Getting Started
+1) Install dependencies: `npm install`
+2) Run dev server: `npm run dev`
+3) Build for production: `npm run build`
+4) Start production server: `npm run start`
 
-# Stack
+### Scripts
+- `npm run dev` – start development server on port 8888
+- `npm run build` – create production build
+- `npm run start` – start production server
+- `npm run lint` – lint source files
 
-- Next.js 🚀
-- React ⚛
-- Redux 🔥
-- Styled-components 💅
-- MongoDB 🍃
+### Contact
+- Site: https://www.feloela.com/
+- Email: hello@feloela.com
+- GitHub: https://github.com/feloela
+- LinkedIn: https://www.linkedin.com/in/feloela/
 
-![home](./public/about/5.png)
-
-# At glance
-
-![home](./public/about/4.png)
-![home](./public/about/2.png)
-![home](./public/about/3.png)
-
-## License
-
-⚖️ MIT Copyright (c) 2021 Felo Ela
+### License
+MIT © 2026 Felo Ela
