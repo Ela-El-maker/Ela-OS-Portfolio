@@ -20,17 +20,23 @@ const DesktopApps = (): JSX.Element => {
   );
 
   useEffect(() => {
-    if (sortDesktopIconsBy === 'name') {
-      setDisplayedDesktopApps(sortedAlphabetically);
-    }
-    if (sortDesktopIconsBy === 'date') {
-      setDisplayedDesktopApps(sortedByDate);
-    }
+    // Default to name sort so desktop icons always render, even if sort preference is unset.
+    const nextList =
+      sortDesktopIconsBy === 'date'
+        ? sortedByDate
+        : sortDesktopIconsBy === 'size'
+        ? sortedBySize
+        : sortedAlphabetically;
 
-    if (sortDesktopIconsBy === 'size') {
-      setDisplayedDesktopApps(sortedBySize);
-    }
-  }, [sortDesktopIconsBy, removedApps.length, compressedApps.length]);
+    setDisplayedDesktopApps(nextList);
+  }, [
+    sortDesktopIconsBy,
+    removedApps.length,
+    compressedApps.length,
+    sortedAlphabetically,
+    sortedByDate,
+    sortedBySize,
+  ]);
 
   return (
     <Styled.UL>

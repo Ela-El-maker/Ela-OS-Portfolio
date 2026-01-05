@@ -3,7 +3,6 @@ import { ISystemTrayButton } from '../../types/ui/system-tray';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import GoogleSearch from '../Apps/GoogleSearch/GoogleSearch';
-import Terminal from '../Apps/Terminal/Terminal';
 import Bing from '../Apps/Bing/Bing';
 import PortfolioLanding from '../Portfolio/PortfolioLanding/PortfolioLanding';
 import PortfolioLayout from '../Portfolio/PortfolioLayout/PortfolioLayout';
@@ -92,14 +91,6 @@ export const useSystemTrayConfig = (): {
     },
     {
       id: 8,
-      src: '/assets/icons/taskbar/bash.png',
-      size: { width: 30, height: 30 },
-      action: null,
-      alt: 'Open Terminal',
-      willOpenWindowWith: <Terminal />,
-    },
-    {
-      id: 9,
       src: themeToggleIcon,
       size: { width: 33, height: 33 },
       action: () => changeTheme(),
