@@ -1,98 +1,125 @@
-import styled, { keyframes } from 'styled-components';
-import { Props } from './Loader';
+import styled, { keyframes, css } from 'styled-components';
 
-const slideOut = keyframes`
-  0% {
-    transform: translateY(0) scaleY(1) scaleX(1);
-    filter: blur(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-1000px) scaleY(2) scaleX(0.2);
-    filter: blur(40px);
-    opacity: 0;
-  }
+const pulse = keyframes`
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 `;
 
-const fadeIn = keyframes`
-  from { opacity: 0; transform: translateX(-10px); }
-  to { opacity: 1; transform: translateX(0); }
+const fadeOut = keyframes`
+  to { opacity: 0; visibility: hidden; }
 `;
 
-export const Container = styled.section<Props>`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 333;
-  width: 100vw;
-  height: 100vh;
-  display: ${(p) => (p.isOnScreen ? 'flex' : 'none')};
-  flex-direction: column;
+export const Overlay = styled.div<{ isOnScreen: boolean; loadingDuration: number }>`
+  position: fixed;
+  inset: 0;
+  background: #0d1117;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0a0a0a; /* Darker for the terminal look */
-  gap: 20px;
+  z-index: 9999;
   
-  /* Your original cool exit animation */
-  animation: ${slideOut} 500ms cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
-  animation-delay: ${({ loadingDuration }) => `${loadingDuration - 500}ms`};
+  ${({ isOnScreen, loadingDuration }) => !isOnScreen && css`
+    animation: ${fadeOut} 0.5s forwards;
+    animation-delay: ${loadingDuration}ms;
+  `}
+`;
 
-  /* CRT Scanline Effect */
-  &::after {
+// export const GlassCard = styled.div`
+//   width: 400px;
+//   padding: 40px;
+//   background: rgba(255, 255, 255, 0.03);
+//   backdrop-filter: blur(12px);
+//   border: 1px solid rgba(255, 255, 255, 0.08);
+//   border-radius: 24px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+// `;
+
+export const IconWrapper = styled.div`
+  width: 80px;
+  height: 80px;
+  color: #58c7f3;
+  margin-bottom: 24px;
+  animation: ${pulse} 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px rgba(88, 199, 243, 0.4));
+`;
+
+export const StatusText = styled.p`
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #e6edf3;
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+  height: 1.2rem;
+`;
+
+export const ProgressBar = styled.div`
+  display: flex;
+  gap: 4px;
+  width: 100%;
+`;
+
+export const Segment = styled.div<{ active: boolean }>`
+  flex: 1;
+  height: 12px;
+  background: ${({ active }) => active ? '#58c7f3' : 'rgba(255, 255, 255, 0.05)'};
+  box-shadow: ${({ active }) => active ? '0 0 10px rgba(88, 199, 243, 0.8)' : 'none'};
+  transition: all 0.3s ease;
+  border-radius: 2px;
+`;
+
+export const AmbientGlow = styled.div`
+  position: absolute;
+  bottom: -100px;
+  width: 60%;
+  height: 200px;
+  background: radial-gradient(circle, rgba(88, 199, 243, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+`;
+
+export const SpecOverlay = styled.div`
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(88, 199, 243, 0.6);
+  line-height: 1.8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  .label {
+    color: rgba(255, 255, 255, 0.3);
+    margin-right: 8px;
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: flex-start;
+    animation: ${pulse} 1s infinite alternate;
+  }
+`;
+
+// Add this to your GlassCard to make it feel more "industrial"
+export const GlassCard = styled.div`
+  /* ... previous styles */
+  position: relative;
+  overflow: hidden;
+
+  /* Adding a corner "bracket" decoration */
+  &::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px;
-    pointer-events: none;
-  }
-`;
-
-export const TextContainer = styled.div`
-  height: 150px; /* Increased to fit the lines */
-  overflow: hidden;
-  margin-top: 20px;
-`;
-
-export const ScrollText = styled.div`
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  color: #33ff33;
-  text-align: left;
-
-  .boot-line {
-    margin-bottom: 8px;
-    animation: ${fadeIn} 0.3s forwards;
-    opacity: 0;
-  }
-
-  /* Stagger the 6 lines of techStack */
-  ${[0, 1, 2, 3, 4, 5].map(i => `
-    .boot-line:nth-child(${i + 1}) { animation-delay: ${i * 150}ms; }
-  `).join('')}
-
-  .status {
-    color: #fff;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-`;
-
-export const LoadingBarContainer = styled.div`
-  width: 250px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  margin-top: 10px;
-  overflow: hidden;
-`;
-
-export const ProgressFill = styled.div<{ duration: number }>`
-  height: 100%;
-  background: #33ff33;
-  width: 0%;
-  animation: fillProgress ${({ duration }) => duration}ms linear forwards;
-
-  @keyframes fillProgress {
-    to { width: 100%; }
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #58c7f3;
+    border-left: 2px solid #58c7f3;
+    border-radius: 24px 0 0 0;
   }
 `;

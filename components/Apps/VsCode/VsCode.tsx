@@ -9,7 +9,7 @@ import Iframe from '../../Iframe/Iframe';
 const VsCode = (): JSX.Element => {
   return (
     <Iframe
-      iframeSrc={'https://github1s.com/feloela/felo-os'}
+      iframeSrc={'https://github1s.com/Ela-El-maker/Ela-OS-Portfolio'}
       iframeSize={{ width: '100%', height: '100%' }}
       title={'VS Code'}
       style={{

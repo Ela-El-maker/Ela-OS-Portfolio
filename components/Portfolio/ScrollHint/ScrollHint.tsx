@@ -1,33 +1,31 @@
 import React from 'react';
 import * as Styled from './ScrollHint.styles';
-import Image from 'next/image';
 import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagraph';
-import { FiArrowDown } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 /**
- *Renders scroll hit component to indicate user to scroll in down direction
- *@function ScrollHint
- *@returns {JSX.Element} - Rendered ScrollHint component
+ * Renders scroll hint component with a technical systems aesthetic
+ * @function ScrollHint
+ * @returns {JSX.Element} - Rendered ScrollHint component
  */
 const ScrollHint = (): JSX.Element => {
   return (
     <Styled.Container>
-      <Image
-        src={'/assets/icons/scroll-bar.svg'}
-        height={50}
-        width={50}
-        style={{ objectFit: 'contain' }}
-        alt={'Scroll down hint'}
-        className={'scroll-hint'}
-      />
+      <Styled.MouseTrack>
+        <Styled.ScrollerDot />
+      </Styled.MouseTrack>
+      
       <PortfolioParagraph
         margin={'0'}
-        paragraphText={'Scroll down'}
+        paragraphText={'INIT_SCROLL_SEQUENCE'}
         withDarkColor={false}
-        variant={'large'}
+        variant={'small'}
         withAnimatedPresence={true}
       />
-      <FiArrowDown className={'icon'} />
+      
+      <Styled.IconWrapper>
+        <FiChevronDown className={'icon'} />
+      </Styled.IconWrapper>
     </Styled.Container>
   );
 };
