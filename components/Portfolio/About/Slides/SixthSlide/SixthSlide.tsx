@@ -4,72 +4,84 @@ import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
 import Slide from '../../../Slide/Slide';
 import ActionButton from '../../../ActionButton/ActionButton';
-import { FiBookOpen, FiChevronsRight } from 'react-icons/fi';
+import { FiBookOpen, FiChevronsRight, FiCpu, FiTerminal } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 
-/**
- *Renders fifth slide in About Portfolio presentation
- *@function SixthSlide
- *@returns {JSX.Element} - Rendered SixthSlide component
- */
 const SixthSlide = (): JSX.Element => {
   const router = useRouter();
-  const redirectToProjects = () => {
-    router.push('/portfolio/projects');
-  };
-  const redirectToArticles = () => {
-    router.push('/articles');
-  };
+  
+  const redirectToProjects = () => router.push('/portfolio/projects');
+  const redirectToArticles = () => router.push('/articles');
+
   return (
-    <Slide bgColor={'#010606'} height={'100vh'} anchorID={'sixth-slide'}>
-      <Styled.SixthSlide>
-        <div className="left-column">
-          <div className="content-wrapper">
+    <Slide bgColor={'#020408'} height={'100vh'} anchorID={'sixth-slide'}>
+      <Styled.Container>
+        {/* Left Module: Projects */}
+        <Styled.InteractiveModule className="left-panel" onClick={redirectToProjects}>
+          <div className="module-glow" />
+          <Styled.ModuleContent>
+            <Styled.SystemTag>
+              <FiCpu /> EXT_NAV // SYSTEM_BUILD_REPO
+            </Styled.SystemTag>
+            
             <SectionHeader
               variant={'small'}
-              headerText={'I build & create'}
+              headerText={'I build & architect'}
               margin={'0'}
               color={'#2bff88'}
             />
+            
             <PortfolioParagraph
-              margin={'2rem 0 4rem 0'}
-              paragraphText={`Web applications, open source projects, tutorials that I'm more than happy to share`}
+              margin={'2rem 0 3rem 0'}
               withDarkColor={false}
               variant={'large'}
               withAnimatedPresence={true}
-            />
+            >
+              Engineering high-performance web applications, specialized tools, and 
+              open-source frameworks designed for system integrity.
+            </PortfolioParagraph>
+
             <ActionButton
-              buttonText={'See my projects'}
+              buttonText={'Access Projects'}
               icon={<FiChevronsRight className="action-icon" />}
               onClick={redirectToProjects}
             />
-          </div>
-        </div>
-        <div className="right-column">
-          <div className="content-wrapper">
+          </Styled.ModuleContent>
+        </Styled.InteractiveModule>
+
+        {/* Right Module: Articles */}
+        <Styled.InteractiveModule className="right-panel" onClick={redirectToArticles}>
+          <div className="module-glow" />
+          <Styled.ModuleContent>
+            <Styled.SystemTag>
+              <FiTerminal /> EXT_NAV // KNOWLEDGE_BASE
+            </Styled.SystemTag>
+            
             <SectionHeader
               variant={'small'}
-              headerText={'I write & advise'}
+              headerText={'I write & analyze'}
               margin={'0'}
-              color={'#2bff88'}
+              color={'#58c7f3'}
             />
+            
             <PortfolioParagraph
-              margin={'2rem 0 4rem 0'}
-              paragraphText={
-                'About web-development, frontend, typescript and the importance of balance'
-              }
+              margin={'2rem 0 3rem 0'}
               withDarkColor={false}
               variant={'large'}
               withAnimatedPresence={true}
-            />
+            >
+              Documenting technical insights on system behavior, TypeScript 
+              optimization, and frontend engineering patterns.
+            </PortfolioParagraph>
+
             <ActionButton
-              buttonText={'Read my articles'}
+              buttonText={'Read Articles'}
               icon={<FiBookOpen className="action-icon" />}
               onClick={redirectToArticles}
             />
-          </div>
-        </div>
-      </Styled.SixthSlide>
+          </Styled.ModuleContent>
+        </Styled.InteractiveModule>
+      </Styled.Container>
     </Slide>
   );
 };

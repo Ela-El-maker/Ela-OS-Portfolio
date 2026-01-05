@@ -4,103 +4,71 @@ import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
 import Slide from '../../../Slide/Slide';
 import SkillIcon from '../../../SkillIcon/SkillIcon';
-import SkillListItem from '../../../SkillListItem/SkillListItem';
-import { useAboutConfig } from '../../About.config';
+import { useSystemsConfig } from '../../About.systems.config';
+import ScrollHint from '../../../ScrollHint/ScrollHint';
 
-/**
- *Renders third slide in About Portfolio presentation
- *@function ThirdSlide
- *@returns {JSX.Element} - Rendered ThirdSlide component
- */
 const ThirdSlide = (): JSX.Element => {
-  const {
-    frontendSkills,
-    frontendTechSkills,
-    backendSkills,
-    backendTechSkills,
-  } = useAboutConfig();
+  const { systemModules } = useSystemsConfig();
+  const ICON_SIZE = { width: 42, height: 42 };
 
   return (
-    <Slide bgColor={'#010606'} height={'100vh'} anchorID={'third-slide'}>
-      <Styled.ThirdSlide id={'third-slide'}>
-        <div className="skills-wrapper">
+    <Slide bgColor={'#020408'} height={'100vh'} anchorID={'third-slide'}>
+      <Styled.ThirdSlideContainer id={'third-slide'}>
+        <Styled.RegistryHeader>
           <SectionHeader
-            variant={'small'}
-            headerText={'Skills'}
+            variant={'extraSmall'}
+            headerText={'SYSTEM_STACK_REGISTRY'}
             margin={'0'}
-            color={'#2bff88'}
+            color={'#58c7f3'}
           />
           <PortfolioParagraph
-            margin={'0'}
-            paragraphText={
-              'Languages I speak, Dev & Design Tools that I particularly enjoy'
-            }
+            margin={'1rem 0 0 0'}
+            paragraphText={'Inventory of validated system modules, tools, and operational metrics.'}
             withDarkColor={false}
-            variant={'large'}
+            variant={'small'}
             withAnimatedPresence={true}
           />
-          <div className="glass-wrapper">
-            <div className="glass-content">
-              <SectionHeader
-                variant={'extraSmall'}
-                headerText={'Frontend'}
-                margin={'0'}
-                color={'#2bff88'}
-              />
-              <ul className={'icon-skills'}>
-                {frontendSkills.map((skill) => (
-                  <li key={skill.id}>
-                    <SkillIcon
-                      iconSrc={skill.iconSrc}
-                      text={skill.text}
-                      iconSize={skill.iconSize}
-                    />
-                  </li>
-                ))}
-              </ul>
+        </Styled.RegistryHeader>
 
-              <ul className="tech-skills">
-                {frontendTechSkills.map((tech) => (
-                  <SkillListItem
-                    key={tech.id}
-                    skillSection={tech.skillSection}
-                    skillValue={tech.skillValue}
-                  />
-                ))}
-              </ul>
-            </div>
+        <Styled.ModuleGrid>
+          {systemModules.map((module) => (
+            <Styled.ModuleCard key={module.id}>
+              <Styled.CardHeader>
+                <span className="type">{module.id}</span>
+                <h3>{module.name}</h3>
+              </Styled.CardHeader>
 
-            <div className="glass-content">
-              <SectionHeader
-                variant={'extraSmall'}
-                headerText={'Backend'}
-                margin={'0'}
-                color={'#2bff88'}
-              />
-              <ul className={'icon-skills'}>
-                {backendSkills.map((skill) => (
-                  <li key={skill.id}>
-                    <SkillIcon
-                      iconSrc={skill.iconSrc}
-                      text={skill.text}
-                      iconSize={skill.iconSize}
-                    />
-                  </li>
+              <Styled.ToolList>
+                {module.tools.map((tool) => (
+                  <Styled.ToolRow key={tool.name}>
+                    <Styled.IconSlot>
+                      <SkillIcon
+                        iconSrc={tool.iconSrc}
+                        text={tool.name}
+                        iconSize={ICON_SIZE}
+                      />
+                    </Styled.IconSlot>
+                    <Styled.ToolMeta>
+                      <Styled.ToolName>{tool.name}</Styled.ToolName>
+                      <Styled.ProficiencyBar>
+                        <Styled.ProficiencyFill level={tool.proficiency} />
+                      </Styled.ProficiencyBar>
+                    </Styled.ToolMeta>
+                    <Styled.ProficiencyValue>
+                      {tool.proficiency}%
+                    </Styled.ProficiencyValue>
+                  </Styled.ToolRow>
                 ))}
-              </ul>
-              <ul className="tech-skills">
-                {backendTechSkills.map((tech) => (
-                  <SkillListItem
-                    key={tech.id}
-                    skillSection={tech.skillSection}
-                    skillValue={tech.skillValue}
-                  />
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Styled.ThirdSlide>
+              </Styled.ToolList>
+            </Styled.ModuleCard>
+          ))}
+        </Styled.ModuleGrid>
+
+        <Styled.TerminalFooter>
+          TOTAL_MODULES: {systemModules.length} // SYSTEMS_ONLINE
+        </Styled.TerminalFooter>
+      </Styled.ThirdSlideContainer>
+      <ScrollHint></ScrollHint>
     </Slide>
   );
 };

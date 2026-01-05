@@ -3,90 +3,88 @@ import * as Styled from './FifthSlide.styles';
 import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
 import Slide from '../../../Slide/Slide';
+import ScrollHint from '../../../ScrollHint/ScrollHint';
 
-/**
- *Renders fifth slide in About Portfolio presentation
- *@function FifthSlide
- *@returns {JSX.Element} - Rendered FifthSlide component
- */
 const FifthSlide = (): JSX.Element => {
   return (
-    <Slide bgColor={'#010606'} height={'100vh'} anchorID={'fifth-slide'}>
-      <Styled.FifthSlide>
-        <SectionHeader
-          variant={'small'}
-          headerText={'Highlighted milestones'}
-          margin={'0'}
-          color={'#2bff88'}
-        />
-        <Styled.Milestone variant={'first'}>
-          <Styled.MilestoneHeader>
-            <h3>Software Development Project Lead</h3>
-            <time>2023-Present</time>
-          </Styled.MilestoneHeader>
-          <h4>Oracle</h4>
-          <PortfolioParagraph
-            margin={'1rem 0'}
-            paragraphText={
-              'I currently lead the frontend development of a modernized version of Oracle CPQ (Configure, Price, Quote). A dynamic application that helps over 500 large customers to configure complex products and services, price them according to the rules and constraints, and generate quotes and proposals.'
-            }
-            withDarkColor={false}
-            variant={'medium'}
-            withAnimatedPresence={true}
+    <Slide bgColor="#020408" height="auto" anchorID="fifth-slide">
+      <Styled.Container>
+        <header className="header-section">
+          <Styled.SystemTag>HIGHLIGHTED_MILESTONES // EXPERIENCE_LOG</Styled.SystemTag>
+          <SectionHeader
+            variant="small"
+            headerText="Professional & Practical Milestones"
+            margin="0"
+            color={'#58c7f3'}
           />
-        </Styled.Milestone>
+        </header>
 
-        <Styled.Milestone variant={'second'}>
-          <Styled.MilestoneHeader>
-            <h3>Senior Software Engineer</h3>
-            <time>2021-2023</time>
-          </Styled.MilestoneHeader>
-          <h4>Oracle</h4>
-          <PortfolioParagraph
-            margin={'1rem 0'}
-            paragraphText={`As a senior engineer, I have contributed to the biggest customer facing applications and services of Oracle CX. I prototyped, designed and helped my team to build a Zoom application integration for Oracle CX Sales (CRM Selling System) from scratch. Played a key role in the modernization and re-implementation of biggest Oracle's CRM - CX Sales.`}
-            withDarkColor={false}
-            variant={'medium'}
-            withAnimatedPresence={true}
-          />
-        </Styled.Milestone>
+        <Styled.TimelineWrapper>
+          <div className="central-pipe" />
 
-        <Styled.Milestone variant={'third'}>
-          <Styled.MilestoneHeader>
-            <h3>Full-Stack Developer</h3>
-            <time>2019-2021</time>
-          </Styled.MilestoneHeader>
-          <h4>Chernivtsi National University</h4>
-          <PortfolioParagraph
-            margin={'1rem 0'}
-            paragraphText={
-              'I worked at Chernivtsi National University on a number of educational and Web projects as a front and back end developer. I architected and constructed solutions daily used by tens of thousands of students and thousands of employees.'
-            }
-            withDarkColor={false}
-            variant={'medium'}
-            withAnimatedPresence={true}
-          />
-        </Styled.Milestone>
+          {/* Daystar University */}
+          <Styled.Milestone variant="first">
+            <div className="node-point" />
+            <Styled.MilestoneContent>
+              <Styled.MilestoneHeader>
+                <span className="status-tag archived">ARCHIVED</span>
+                <h3>IT Support & Systems Exposure</h3>
+                <time>Daystar University</time>
+              </Styled.MilestoneHeader>
+              <span className="company">ACADEMIC_ENVIRONMENT</span>
+              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
+                Provided hands-on technical support in an academic setting,
+                troubleshooting operating system issues, software failures,
+                network connectivity problems, and general workstation faults.
+                This environment sharpened my diagnostic discipline and user
+                communication skills.
+              </PortfolioParagraph>
+            </Styled.MilestoneContent>
+          </Styled.Milestone>
 
-        <Styled.Milestone variant={'fourth'}>
-          <Styled.MilestoneHeader>
-            <h3>PhD Student | Applied Scientist</h3>
-            <time>2015-2019</time>
-          </Styled.MilestoneHeader>
-          <h4>
-            University of Oulu | Taras Shevchenko National University of Kyiv
-          </h4>
-          <PortfolioParagraph
-            margin={'1rem 0'}
-            paragraphText={
-              'I worked in an interdisplinary international research team on the development of cutting-edge medical image processing techniques. I have published a number of papers in high-impact journals and conferences.'
-            }
-            withDarkColor={false}
-            variant={'medium'}
-            withAnimatedPresence={true}
-          />
-        </Styled.Milestone>
-      </Styled.FifthSlide>
+          {/* BSA */}
+          <Styled.Milestone variant="second">
+            <div className="node-point" />
+            <Styled.MilestoneContent>
+              <Styled.MilestoneHeader>
+                <span className="status-tag archived">ARCHIVED</span>
+                <h3>Technical Operations & Support</h3>
+                <time>BSA</time>
+              </Styled.MilestoneHeader>
+              <span className="company">PRODUCTION_ENVIRONMENT</span>
+              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
+                Supported internal systems and user devices in a structured
+                organizational environment. Gained exposure to operational
+                workflows, system reliability expectations, and maintaining
+                uptime under real usage constraints.
+              </PortfolioParagraph>
+            </Styled.MilestoneContent>
+          </Styled.Milestone>
+
+          {/* Peer Repairs */}
+          <Styled.Milestone variant="third">
+            <div className="node-point" />
+            <Styled.MilestoneContent>
+              <Styled.MilestoneHeader>
+                <span className="status-tag">ONGOING</span>
+                <h3>Peer Device Repair & Troubleshooting</h3>
+                <time>Ongoing</time>
+              </Styled.MilestoneHeader>
+              <span className="company">INDEPENDENT_PRACTICE</span>
+              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
+                Diagnosed and repaired fellow students’ laptops and desktops,
+                handling hardware faults, OS corruption, driver issues, and
+                performance degradation. This work built intuition around
+                failure patterns and reinforced a systems-first mindset.
+              </PortfolioParagraph>
+            </Styled.MilestoneContent>
+          </Styled.Milestone>
+        </Styled.TimelineWrapper>
+
+        <Styled.FooterPadding>
+          <ScrollHint />
+        </Styled.FooterPadding>
+      </Styled.Container>
     </Slide>
   );
 };

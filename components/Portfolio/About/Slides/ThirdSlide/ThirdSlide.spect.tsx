@@ -1,38 +1,33 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import ThirdSlide from './ThirdSlide';
-import '../../../../__mocks__/intersectionObserverMock';
-import PortfolioParagraph from '../../../Typography/PortfolioParagraph/PortfolioParagraph';
-import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 import SkillIcon from '../../../SkillIcon/SkillIcon';
+import SectionHeader from '../../../Typography/SectionHeader/SectionHeader';
 
-/**
- * Setup function for the component
- * @returns {JSX.Element} ShallowWrapper
- */
-const setup = () => {
-  return shallow(<ThirdSlide />);
-};
+describe('ThirdSlide - Registry Spec', () => {
+  const wrap = shallow(<ThirdSlide />);
 
-describe('ThirdSlide', () => {
-  const wrap = setup();
-
-  it('should render without throwing an error', () => {
-    expect(wrap);
-    expect(wrap.length).toBe(1);
+  it('should render exactly 2 technical module cards', () => {
+    // Checking for our new ModuleCard styled component
+    expect(wrap.find('Styled(div)').length).toBeGreaterThanOrEqual(2);
   });
 
-  it('should render all skill icons', () => {
-    const skillIcon = wrap.find(SkillIcon);
-    expect(skillIcon.length).toBe(14);
+  it('should render the registry header correctly', () => {
+    const header = wrap.find(SectionHeader).first();
+    expect(header.prop('headerText')).toBe('TECH_STACK_REGISTRY');
   });
 
-  it('should render  paragraph', () => {
-    const paragraph = wrap.find(PortfolioParagraph);
-    expect(paragraph.length).toBe(1);
-  });
-  it('should render three headers', () => {
-    const headers = wrap.find(SectionHeader);
-    expect(headers.length).toBe(3);
+it('should render skill icons for each tool in the module', () => {
+  const skillIcons = wrap.find(SkillIcon);
+  // Based on your 5 modules with 3 tools each
+  expect(skillIcons.length).toBe(15);
+});
+
+it('should render proficiency metrics for each tool', () => {
+  const bars = wrap.find('.proficiency-bar');
+  expect(bars.length).toBe(15);
+});
+  it('should display the terminal footer with dependency count', () => {
+    expect(wrap.find('Styled(div)').last().text()).toContain('TOTAL_DEPENDENCIES');
   });
 });

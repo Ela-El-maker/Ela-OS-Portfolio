@@ -4,7 +4,7 @@ import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagr
 
 export interface Props {
   skillSection: string;
-  skillValue: string;
+  skillValue: string | number;
 }
 
 /**
@@ -19,7 +19,7 @@ const SkillListItem = ({ skillSection, skillValue }: Props): JSX.Element => {
       <Styled.SkillSection>{skillSection}</Styled.SkillSection>
       <PortfolioParagraph
         margin={'0'}
-        paragraphText={skillValue}
+        paragraphText={String(skillValue)}
         withDarkColor={false}
         variant={'medium'}
         withAnimatedPresence={false}

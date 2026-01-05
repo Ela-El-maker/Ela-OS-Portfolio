@@ -27,9 +27,7 @@ interface ServerProps {
  */
 const Home: NextPage<ServerProps> = ({ title }) => {
   // Use a stable default to keep server and client markup aligned during hydration
-  const isOnMobile = useMediaQuery('only screen and (max-width: 768px)', {
-    defaultMatches: false,
-  });
+  const isOnMobile = useMediaQuery('only screen and (max-width: 768px)');
   const { shouldIntroBeShown } = useTypedSelector((state) => state.ui);
   const [isLoading, setIsLoading] = useState(shouldIntroBeShown);
   const { notShowIntroAgain } = useActions();
