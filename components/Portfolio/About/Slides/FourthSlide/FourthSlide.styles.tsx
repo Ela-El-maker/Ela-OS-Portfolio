@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const draw = keyframes`
   0% { stroke-dashoffset: 200; opacity: 0; }
@@ -69,6 +69,36 @@ export const Container = styled.div`
     gap: 5rem;
     align-items: center;
   }
+
+  .text-section {
+    max-width: 640px;
+  }
+
+  .visual-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: 1100px) {
+    padding: 0 8%;
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .text-section {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 4rem;
+  }
 `;
 
 export const SystemTag = styled.span`
@@ -105,8 +135,9 @@ export const InsightBadge = styled.div`
 
 export const SchematicContainer = styled.div`
   position: relative;
-  width: 400px;
-  height: 300px;
+  width: clamp(260px, 45vw, 400px);
+  height: clamp(200px, 34vw, 300px);
+  margin: 0 auto;
   perspective: 1000px;
 `;
 
@@ -148,6 +179,9 @@ export const DiagnosticConsole = styled.div`
   border-radius: 6px;
   position: relative;
   overflow: hidden;
+  width: min(100%, 520px);
+  margin-left: auto;
+  margin-right: auto;
 
   /* Scanning line effect */
   &::before {

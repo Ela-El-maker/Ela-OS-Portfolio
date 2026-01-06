@@ -1,23 +1,48 @@
 import styled, { keyframes } from 'styled-components';
 
-const scanline = keyframes`
+const scanMove = keyframes`
   0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  100% { transform: translateY(500%); }
+`;
+
+const flicker = keyframes`
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.98; }
+  20% { opacity: 0.92; }
+  100% { opacity: 1; }
 `;
 
 export const Container = styled.div`
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(88, 199, 243, 0.05) 0%, transparent 80%),
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  background-size: 100% 100%, 100% 2px, 3px 100%;
+  position: relative;
+  background-color: #020408;
+  overflow: hidden;
+  animation: ${flicker} 0.15s infinite;
 
-  @media (max-width: 900px) {
+  @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
   }
+`;
+
+export const CRTOverlay = styled.div`
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.03), 
+    rgba(0, 255, 0, 0.01), 
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 10;
 `;
 
 export const InteractiveModule = styled.section`
@@ -29,63 +54,65 @@ export const InteractiveModule = styled.section`
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(88, 199, 243, 0.05);
-  overflow: hidden;
 
-  &.right-panel {
-    background: rgba(88, 199, 243, 0.02);
-  }
-
-  /* Scanning line effect on hover */
-  &::before {
-    content: '';
+  .scan-line {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 20%;
-    background: linear-gradient(to bottom, transparent, rgba(88, 199, 243, 0.1), transparent);
+    top: 0; left: 0; width: 100%; height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(88, 199, 243, 0.05), transparent);
     opacity: 0;
-    transition: opacity 0.3s;
     pointer-events: none;
   }
 
+  &.right-panel {
+    background: rgba(88, 199, 243, 0.01);
+    border-left: 1px solid rgba(88, 199, 243, 0.1);
+  }
+
   &:hover {
-    background: rgba(88, 199, 243, 0.06);
-    &::before {
+    background: rgba(88, 199, 243, 0.04);
+    
+    .scan-line {
       opacity: 1;
-      animation: ${scanline} 2s linear infinite;
+      animation: ${scanMove} 3s linear infinite;
+    }
+
+    /* Subtle zoom effect on hover */
+    & > div {
+      transform: scale(1.02);
     }
   }
 
-  @media (max-width: 900px) {
+  @media ${({ theme }) => theme.media.tablet} {
     flex: 1;
-    padding: 4rem 2rem;
+    border-left: none;
+    border-bottom: 1px solid rgba(88, 199, 243, 0.1);
   }
 `;
 
 export const ModuleContent = styled.div`
-  width: 65%;
-  z-index: 2;
+  width: 60%;
+  z-index: 5;
+  transition: transform 0.4s ease;
 
-  button {
-    margin-top: 1rem;
-    /* Optional: override action button colors to match the theme */
-  }
-
-  @media (max-width: 1200px) {
+  @media ${({ theme }) => theme.media.tablet} {
     width: 85%;
+    padding: 3rem 0;
   }
 `;
 
 export const SystemTag = styled.div`
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #58c7f3;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
-  letter-spacing: 2px;
-  opacity: 0.8;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
 
   svg {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    filter: drop-shadow(0 0 5px #58c7f3);
   }
 `;

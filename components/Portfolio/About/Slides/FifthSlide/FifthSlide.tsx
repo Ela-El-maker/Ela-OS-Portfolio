@@ -12,33 +12,56 @@ const FifthSlide = (): JSX.Element => {
         <header className="header-section">
           <Styled.SystemTag>HIGHLIGHTED_MILESTONES // EXPERIENCE_LOG</Styled.SystemTag>
           <SectionHeader
-            variant="small"
+            variant="extraSmall"
             headerText="Professional & Practical Milestones"
             margin="0"
             color={'#58c7f3'}
           />
         </header>
 
+        <PortfolioParagraph
+          margin="1.5rem 0 3rem 0"
+          withDarkColor={false}
+          variant="medium"
+          withAnimatedPresence={false}
+        >
+          These milestones represent hands-on exposure to real systems in use.
+          From academic environments to operational organizations and independent
+          repair work, each phase reinforced a systems-first mindset built on
+          diagnosis, responsibility, and reliability.
+        </PortfolioParagraph>
+
         <Styled.TimelineWrapper>
-          <div className="central-pipe" />
+          <div className="central-pipe">
+            <div className="pipe-glow" />
+          </div>
 
           {/* Daystar University */}
           <Styled.Milestone variant="first">
             <div className="node-point" />
             <Styled.MilestoneContent>
               <Styled.MilestoneHeader>
-                <span className="status-tag archived">ARCHIVED</span>
-                <h3>IT Support & Systems Exposure</h3>
-                <time>Daystar University</time>
+                <div className="left-meta">
+                  <span className="status-tag archived">ARCHIVED</span>
+                  <h3>IT Support & Systems Exposure</h3>
+                </div>
+                <time>2021 — 2022</time>
               </Styled.MilestoneHeader>
-              <span className="company">ACADEMIC_ENVIRONMENT</span>
-              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
-                Provided hands-on technical support in an academic setting,
-                troubleshooting operating system issues, software failures,
-                network connectivity problems, and general workstation faults.
-                This environment sharpened my diagnostic discipline and user
-                communication skills.
+              <Styled.EnvironmentBadge type="academic">ACADEMIC_ENVIRONMENT</Styled.EnvironmentBadge>
+              
+              <PortfolioParagraph variant="small" withDarkColor={false} margin={'1rem 0'} withAnimatedPresence={false}>
+                Provided technical support across student and institutional
+              systems, troubleshooting software failures, OS issues, and
+              hardware faults. Frequently diagnosed problems under time
+              pressure, restoring systems to working state with minimal
+              disruption.
               </PortfolioParagraph>
+
+              <Styled.Tags>
+                <span>System Troubleshooting</span>
+                <span>OS Repair</span>
+                <span>User Support</span>
+              </Styled.Tags>
             </Styled.MilestoneContent>
           </Styled.Milestone>
 
@@ -47,36 +70,54 @@ const FifthSlide = (): JSX.Element => {
             <div className="node-point" />
             <Styled.MilestoneContent>
               <Styled.MilestoneHeader>
-                <span className="status-tag archived">ARCHIVED</span>
-                <h3>Technical Operations & Support</h3>
-                <time>BSA</time>
+                <div className="left-meta">
+                  <span className="status-tag archived">ARCHIVED</span>
+                  <h3>Technical Operations & Support</h3>
+                </div>
+                <time>2025 — 2026</time>
               </Styled.MilestoneHeader>
-              <span className="company">PRODUCTION_ENVIRONMENT</span>
-              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
-                Supported internal systems and user devices in a structured
-                organizational environment. Gained exposure to operational
-                workflows, system reliability expectations, and maintaining
-                uptime under real usage constraints.
+              <Styled.EnvironmentBadge type="production">PRODUCTION_ENVIRONMENT</Styled.EnvironmentBadge>
+              
+              <PortfolioParagraph variant="small" withDarkColor={false} margin={'1rem 0'} withAnimatedPresence={false}>
+               Worked within structured organizational systems, supporting
+              operational workflows and maintaining reliability across internal
+              tooling. Gained exposure to professional delivery standards,
+              accountability, and production expectations.
               </PortfolioParagraph>
+
+              <Styled.Tags>
+                <span>Operational Systems</span>
+                <span>Process Reliability</span>
+                <span>Professional Delivery</span>
+              </Styled.Tags>
             </Styled.MilestoneContent>
           </Styled.Milestone>
 
-          {/* Peer Repairs */}
+          {/* Independent Repairs */}
           <Styled.Milestone variant="third">
             <div className="node-point" />
             <Styled.MilestoneContent>
               <Styled.MilestoneHeader>
-                <span className="status-tag">ONGOING</span>
-                <h3>Peer Device Repair & Troubleshooting</h3>
-                <time>Ongoing</time>
+                <div className="left-meta">
+                  <span className="status-tag active">ONGOING</span>
+                  <h3>Peer Device Repair & Recovery</h3>
+                </div>
+                <time>Continuous</time>
               </Styled.MilestoneHeader>
-              <span className="company">INDEPENDENT_PRACTICE</span>
-              <PortfolioParagraph variant="medium" withDarkColor={false} margin={''} withAnimatedPresence={false}>
-                Diagnosed and repaired fellow students’ laptops and desktops,
-                handling hardware faults, OS corruption, driver issues, and
-                performance degradation. This work built intuition around
-                failure patterns and reinforced a systems-first mindset.
+              <Styled.EnvironmentBadge type="independent">INDEPENDENT_PRACTICE</Styled.EnvironmentBadge>
+              
+              <PortfolioParagraph variant="small" withDarkColor={false} margin={'1rem 0'} withAnimatedPresence={false}>
+                Diagnosed and repaired laptops for fellow students, handling
+              hardware replacements, OS reinstalls, data recovery, and malware
+              removal. Built a reputation for resolving issues others had
+              abandoned.
               </PortfolioParagraph>
+
+              <Styled.Tags>
+                <span>Hardware Repair</span>
+                <span>Data Recovery</span>
+                <span>Fault Isolation</span>
+              </Styled.Tags>
             </Styled.MilestoneContent>
           </Styled.Milestone>
         </Styled.TimelineWrapper>

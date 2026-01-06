@@ -10,6 +10,14 @@ export const ThirdSlideContainer = styled.div`
     linear-gradient(rgba(88, 199, 243, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(88, 199, 243, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
+
+  @media (max-width: 900px) {
+    padding: 3rem 8%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 2.5rem 1.5rem;
+  }
 `;
 
 export const RegistryHeader = styled.div`
@@ -20,9 +28,13 @@ export const RegistryHeader = styled.div`
 
 export const ModuleGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 2rem;
   align-items: start;
+
+  @media (max-width: 600px) {
+    gap: 1.5rem;
+  }
 `;
 
 
