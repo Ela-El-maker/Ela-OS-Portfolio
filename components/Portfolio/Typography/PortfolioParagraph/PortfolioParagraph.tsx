@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import * as Styled from './PortfolioParagraph.styles';
 
 export interface Props {
@@ -7,6 +7,7 @@ export interface Props {
   withDarkColor: boolean;
   variant: 'large' | 'medium' | 'small';
   withAnimatedPresence: boolean;
+  children?: ReactNode;
 }
 
 /**

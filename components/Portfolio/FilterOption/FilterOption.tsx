@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import * as Styled from './FilterOption.styles';
 import { ArticleSortingOption } from '../../../types/redux/articles-reducer-types';
 
 export type Props =
   | {
-      variant: 'sortingOption';
-      sortingTag: ArticleSortingOption;
-      action: (sortingOption: ArticleSortingOption) => void;
-    }
+    variant: 'sortingOption';
+    sortingTag: ArticleSortingOption;
+    action: (sortingOption: ArticleSortingOption) => void;
+    children?: ReactNode;
+  }
   | {
-      variant: 'filterOption';
-      filterTag: string;
-      action: (filterOption: string) => void;
-    };
+    variant: 'filterOption';
+    filterTag: string;
+    action: (filterOption: string) => void;
+    children?: ReactNode;
+  };
 
 /**
  *Renders filter option for ArticleFiltersMenu modal. Has local state to indicate active/inactive state of selection

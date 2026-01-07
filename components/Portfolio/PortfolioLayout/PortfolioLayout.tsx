@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import * as Styled from './PortfolioLayout.styles';
 import Head from 'next/head';
 
 export interface Props {
   title: string;
+  children?: ReactNode;
 }
 
 /**

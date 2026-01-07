@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import * as Styled from './Slide.styles';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 
@@ -6,6 +6,7 @@ export interface Props {
   anchorID: string;
   bgColor: string;
   height: string;
+  children?: ReactNode;
 }
 
 /**

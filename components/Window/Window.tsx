@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import * as Styled from './Window.styles';
 import { FiSquare, FiX } from 'react-icons/fi';
@@ -12,6 +12,7 @@ export interface Props {
   size: { height: number; width: number };
   isOpen: boolean;
   closeWindow: () => void;
+  children?: ReactNode;
 }
 
 /**

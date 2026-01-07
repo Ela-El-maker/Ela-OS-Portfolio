@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import * as Styled from './SectionHeader.styles';
 
 export interface Props {
@@ -7,6 +7,7 @@ export interface Props {
   margin: string;
   color: string;
   withGradient?: boolean;
+  children?: ReactNode;
 }
 
 /**

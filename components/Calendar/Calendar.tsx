@@ -14,7 +14,7 @@ import { useCloseModalIfClickedOutside } from '../../hooks/useCloseIfClickedOuts
  */
 const CalendarWidget = (): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [value, onChange] = useState(new Date());
+  const [value, setValue] = useState<Date>(new Date());
 
   const { closeCalendarModal } = useActions();
   const { isCalendarOpen } = useTypedSelector((state) => state.ui);
@@ -25,13 +25,20 @@ const CalendarWidget = (): JSX.Element => {
     modalRef: containerRef,
   });
 
+  const handleChange = (v: any) => {
+    if (Array.isArray(v)) {
+      setValue(v[0] ?? new Date());
+    } else if (v instanceof Date) {
+      setValue(v);
+    }
+  };
+
   return (
     <Styled.Container ref={containerRef}>
       <Calendar
-        onChange={onChange}
+        onChange={handleChange as any}
         value={value}
         showWeekNumbers={false}
-        calendarType={'US'}
         maxDetail={'month'}
         minDetail={'month'}
         view={'month'}

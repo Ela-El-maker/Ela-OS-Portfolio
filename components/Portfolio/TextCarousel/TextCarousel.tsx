@@ -17,7 +17,7 @@ export interface Props {
  */
 const TextCarousel = ({ quotes }: Props): JSX.Element => {
   const [quoteID, setQuoteID] = useState(0);
-  const [intervalID, setIntervalID] = useState<NodeJS.Timer | null>(null);
+  const [intervalID, setIntervalID] = useState<number | null>(null);
 
   const { title, quote } = quotes[quoteID];
 
@@ -36,14 +36,14 @@ const TextCarousel = ({ quotes }: Props): JSX.Element => {
 
   // this useEffect changes index of displayed quote from "quotes", thereby rendering next slide
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       setQuoteID((prev) => (prev + 1 >= quotes.length ? 0 : prev + 1));
     }, 10000);
 
     setIntervalID(interval);
 
     return () => {
-      clearInterval(interval);
+      window.clearInterval(interval);
     };
   }, [quoteID, quotes.length]);
 

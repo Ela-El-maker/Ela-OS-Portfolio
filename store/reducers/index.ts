@@ -50,7 +50,8 @@ export const reducer = (state: State | undefined, action: AnyAction) => {
 
     return nextState;
   } else {
-    return rootReducer(state, action);
+    // Cast action to satisfy combined reducer's narrower action union types
+    return rootReducer(state, action as any);
   }
 };
 

@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import * as Styled from './SlidingModal.styles';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export interface SliderProps {
   variant:
-    | 'widgetsModal'
-    | 'systemTrayModal'
-    | 'settingsModal'
-    | 'searchModal'
-    | 'calendarModal';
+  | 'widgetsModal'
+  | 'systemTrayModal'
+  | 'settingsModal'
+  | 'searchModal'
+  | 'calendarModal';
   width: string;
   position: { top?: string; bottom?: string; right?: string; left?: string };
+  children?: ReactNode;
 }
 
 /**
