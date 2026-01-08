@@ -6,16 +6,17 @@ type ContainerProps = Pick<IHighlightedProject, 'slideBgColor' | 'slideHeight'>;
 
 export const Container = styled.section<ContainerProps>`
   display: flex;
-  height: ${({ slideHeight }) => slideHeight || '100%'};
+  height: 100vh; /* Force exactly one viewport height */
+  min-height: 100vh; 
   background-color: ${({ slideBgColor }) => slideBgColor};
   position: relative;
-  scroll-snap-align: center;
+  scroll-snap-align: start; /* 'start' is usually more reliable than 'center' for full-page slides */
+  scroll-snap-stop: always; /* Prevents users from skipping 5 slides in one flick */
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
   }
 `;
-
 /**
  * LEFT COLUMN
  */

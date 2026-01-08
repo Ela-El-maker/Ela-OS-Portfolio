@@ -7,13 +7,18 @@ import {
 
 export const Container = styled.section`
   background-color: #020408;
-  height: 100vh;
+  height: 100vh; /* Keep this to lock the viewport */
+  width: 100%;
+  overflow-y: auto; /* Allow scrolling within the locked container */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth; /* Adds that premium feel when jumping sections */
 
-  @media ${({ theme }) => theme.media.desktop} {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
+  /* Hide scrollbar for a clean "OS" look while keeping functionality */
+  &::-webkit-scrollbar {
+    display: none;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const SystemTag = styled.div`
@@ -49,7 +54,11 @@ export const HeroLeftColumn = styled.div`
   padding: 0 10%;
   z-index: 2;
 
-  h1 { font-size: 4rem; font-weight: 800; }
+ h1 { 
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Responsive font size */
+    font-weight: 800; 
+    line-height: 1.1;
+  }
 
   @media ${({ theme }) => theme.media.tablet} {
     flex: 1;
@@ -90,4 +99,14 @@ export const FloatingImgContainer = styled.figure<{ variant: 'laptop' | 'phone' 
     if (variant === 'phone') return css`animation: ${floatingMobileKeyframes} 7s ease-in-out infinite;`;
     return css`animation: ${floatingWatchKeyframes} 6s ease-in-out infinite;`;
   }}
+`;
+
+export const SnapWrapper = styled.section`
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;

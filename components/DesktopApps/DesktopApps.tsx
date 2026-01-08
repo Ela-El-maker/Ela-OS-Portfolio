@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import * as Styled from './DesktopApps.styles';
 import { useDesktopApps } from './DesktopApps.config';
 import DesktopButton from '../DesktopButton/DesktopButton';
@@ -11,32 +11,16 @@ import { IDesktopApp } from '../../types/ui/desktop-app';
  *@returns {JSX.Element} - Rendered DesktopApps component
  */
 const DesktopApps = (): JSX.Element => {
-  const [displayedDesktopApps, setDisplayedDesktopApps] = useState<
-    IDesktopApp[]
-  >([]);
   const { sortedAlphabetically, sortedByDate, sortedBySize } = useDesktopApps();
-  const { sortDesktopIconsBy, removedApps, compressedApps } = useTypedSelector(
+  const { sortDesktopIconsBy, removedApps } = useTypedSelector(
     (state) => state.ui
   );
 
-  useEffect(() => {
-    // Default to name sort so desktop icons always render, even if sort preference is unset.
-    const nextList =
-      sortDesktopIconsBy === 'date'
-        ? sortedByDate
-        : sortDesktopIconsBy === 'size'
-        ? sortedBySize
-        : sortedAlphabetically;
-
-    setDisplayedDesktopApps(nextList);
-  }, [
-    sortDesktopIconsBy,
-    removedApps.length,
-    compressedApps.length,
-    sortedAlphabetically,
-    sortedByDate,
-    sortedBySize,
-  ]);
+  const displayedDesktopApps = useMemo(() => {
+    if (sortDesktopIconsBy === 'date') return sortedByDate;
+    if (sortDesktopIconsBy === 'size') return sortedBySize;
+    return sortedAlphabetically;
+  }, [sortDesktopIconsBy, sortedAlphabetically, sortedByDate, sortedBySize]);
 
   return (
     <Styled.UL>

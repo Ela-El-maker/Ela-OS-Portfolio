@@ -51,7 +51,7 @@ const ProjectDesktopSlide = ({
                     src={slideNumberImg}
                     height={200}
                     width={200}
-                    quality={90}
+                    quality={95}
                     style={{ objectFit: 'contain' }}
                     alt={`This image indicates the number of current slide`}
                   />
@@ -65,7 +65,7 @@ const ProjectDesktopSlide = ({
                   src={projectImg}
                   height={800}
                   width={800}
-                  quality={90}
+                  quality={95}
                   style={{ objectFit: 'contain' }}
                   alt={projectTitle}
                 />

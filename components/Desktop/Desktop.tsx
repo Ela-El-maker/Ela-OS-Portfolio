@@ -20,8 +20,8 @@ const Desktop = (): JSX.Element => {
 
   const backgroundWallpaper =
     theme === 'dark'
-      ? 'assets/wallpapers/default_dark_compressed.jpg'
-      : 'assets/wallpapers/default_light_compressed.jpg';
+      ? '/assets/wallpapers/default_dark_compressed.jpg'
+      : '/assets/wallpapers/default_light_compressed.jpg';
 
   const mouseCoords = useGetMouseCoordinates();
   const handleRightMouseClick = (

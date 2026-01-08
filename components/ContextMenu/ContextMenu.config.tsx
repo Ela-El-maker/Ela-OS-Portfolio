@@ -1,6 +1,5 @@
 import React from 'react';
 import { IContextMenuItem } from '../ContextMenuItem/ContextMenuItem';
-import { useRouter } from 'next/router';
 import { useActions } from '../../hooks/useActions';
 import { IconSize, IconSortVariant } from '../../types/redux/ui-reducer-types';
 import Terminal from '../Apps/Terminal/Terminal';
@@ -25,7 +24,6 @@ export const useContextMenuConfig = (): {
   desktopContextMenuContent: IContextMenuItem[];
   systemTrayContextMenuContent: IContextMenuItem[];
 } => {
-  const router = useRouter();
   const {
     sortDesktopIcons,
     changeDesktopIconSize,
@@ -33,7 +31,11 @@ export const useContextMenuConfig = (): {
     undoLastDeleteDesktopApp,
   } = useActions();
 
-  const reloadPage = () => router.reload();
+  const reloadPage = () => {
+    if (typeof window !== 'undefined') {
+      window.location.reload();
+    }
+  };
 
   const sortIconsBy = (way: IconSortVariant) => sortDesktopIcons(way);
 

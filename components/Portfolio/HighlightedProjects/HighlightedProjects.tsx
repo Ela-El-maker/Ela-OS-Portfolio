@@ -20,7 +20,7 @@ const HighlightedProjects = (): JSX.Element => {
   return (
     <Styled.Container>
       <Navbar isLogoExpanded={true} />
-      
+
       {/* HERO SECTION: The Project Manifest */}
       <Styled.ProjectsHero>
         <Styled.HeroLeftColumn>
@@ -46,7 +46,7 @@ const HighlightedProjects = (): JSX.Element => {
               <Image src={'/assets/portfolio/landing-laptop.png'} height={800} width={800} alt={'IDE Architecture'} priority className={'laptop'} />
             </Styled.FloatingImgContainer>
           </Styled.ImageContainer>
-          
+
           <Styled.ImageContainer position={{ top: '40%', right: '15%' }} className={'mobile-wrapper'}>
             <Styled.FloatingImgContainer variant={'phone'}>
               <Image src={'/assets/portfolio/landing-mobile.png'} height={450} width={350} alt={'Mobile Interface'} priority className={'mobile'} />
@@ -58,32 +58,35 @@ const HighlightedProjects = (): JSX.Element => {
       </Styled.ProjectsHero>
 
       {/* PROJECT DEPLOYMENTS */}
+      {/* PROJECT DEPLOYMENTS */}
       {highlightedProjects.map((project, index) => (
         <React.Fragment key={project.projectTitle}>
           <ProjectDesktopSlide {...project} />
-          
-          {/* Add extra details for specific high-impact projects */}
+
+          {/* Wrap specialized details so they don't break the snap flow */}
           {index === 2 && (
-             <ProjectDetailsSlide
-               slideHeight={'100vh'}
-               slideBgColor={'#010606'}
-               projectName={project.projectTitle}
-               projectMobileImg={project.projectMobileImg}
-               projectQuotes={projectDetailsQuotes}
-             />
+            <Styled.SnapWrapper>
+              <ProjectDetailsSlide
+                slideHeight={'100%'} /* Fill the wrapper */
+                slideBgColor={'#010606'}
+                projectName={project.projectTitle}
+                projectMobileImg={project.projectMobileImg}
+                projectQuotes={projectDetailsQuotes}
+              />
+            </Styled.SnapWrapper>
           )}
-          
+
           {index === 3 && (
-            <>
+            <Styled.SnapWrapper>
               <WaveDivider waveImg={'/assets/portfolio/blob-1.svg'} dividerHeight={'150px'} />
               <ProjectDetailsSlide
-                slideHeight={'100vh'}
+                slideHeight={'calc(100% - 150px)'} /* Subtract the wave height */
                 slideBgColor={'#4831d4'}
                 projectName={project.projectTitle}
                 projectMobileImg={project.projectMobileImg}
                 projectQuotes={opticsProjectDetailQuotes}
               />
-            </>
+            </Styled.SnapWrapper>
           )}
         </React.Fragment>
       ))}

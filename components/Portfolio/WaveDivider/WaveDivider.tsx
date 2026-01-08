@@ -1,9 +1,9 @@
 import React from 'react';
 import * as Styled from './WaveDivider.styles';
 
-export interface Props {
+export interface WaveDividerProps {
   waveImg: string;
-  dividerHeight: string;
+  dividerHeight?: string; // Optional if you have a default in Styles
   margin?: string;
 }
 
@@ -19,7 +19,7 @@ const WaveDivider = ({
   waveImg,
   dividerHeight,
   margin,
-}: Props): JSX.Element => {
+}: WaveDividerProps): JSX.Element => {
   return (
     <Styled.Container>
       <Styled.Wave

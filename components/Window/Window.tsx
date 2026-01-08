@@ -88,7 +88,7 @@ const Window: FC<Props> = ({
               alt={windowName}
               height={20}
               width={20}
-              quality={90}
+              quality={95}
               style={{ objectFit: 'contain' }}
             />
             <Paragraph margin={'0'}>{windowName}</Paragraph>
