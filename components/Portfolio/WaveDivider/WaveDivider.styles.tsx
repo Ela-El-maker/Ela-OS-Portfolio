@@ -8,17 +8,15 @@ export const Container = styled.div`
 export const Wave = styled.div<WaveDividerProps>`
   background-image: ${({ waveImg }) => `url(${waveImg})`};
   height: ${({ dividerHeight }) => dividerHeight || '200px'};
-  margin: ${({ margin }) => margin || '0'};
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   
-  /* Critical fix for sub-pixel rendering gaps */
+  /* Bleed the grid through the wave */
+  opacity: 0.9; 
+  backdrop-filter: blur(4px); 
+  
   margin-bottom: -2px;
   position: relative;
   z-index: 2;
-
-  @media ${({ theme }) => theme.media.phone} {
-    height: 120px;
-  }
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import * as Styled from './TextCarousel.styles';
 import { ICarouselQuote } from '../../../types/portfolio';
 import SectionHeader from '../Typography/SectionHeader/SectionHeader';
@@ -9,70 +9,110 @@ export interface Props {
   quotes: ICarouselQuote[];
 }
 
-/**
- *Renders carousel with text quotes
- *@function TextCarousel
- *@param {ICarouselQuote[]} quotes - array of quotes with title and text of quote
- *@returns {JSX.Element} - Rendered TextCarousel component
- */
 const TextCarousel = ({ quotes }: Props): JSX.Element => {
   const [quoteID, setQuoteID] = useState(0);
-  const [intervalID, setIntervalID] = useState<number | null>(null);
-
+  const [scrambledTitle, setScrambledTitle] = useState('');
   const { title, quote } = quotes[quoteID];
 
-  const proceedToNextQuote = () => {
-    let newId = quoteID + 1;
-    if (newId >= quotes.length) newId = 0;
-    if (intervalID !== null) clearInterval(intervalID);
-    setQuoteID(newId);
-  };
-  const proceedToPrevQuote = () => {
-    let newId = quoteID - 1;
-    if (newId < 0) newId = quotes.length - 1;
-    if (intervalID !== null) clearInterval(intervalID);
-    setQuoteID(newId);
-  };
+  // The Decryption Animation Logic
+  const decrypt = useCallback((targetText: string) => {
+    const chars = '!<>-_\\/[]{}—=+*^?#________';
+    let iteration = 0;
 
-  // this useEffect changes index of displayed quote from "quotes", thereby rendering next slide
+    const interval = setInterval(() => {
+      setScrambledTitle(
+        targetText.split('')
+          .map((_, index) => {
+            if (index < iteration) return targetText[index];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join('')
+      );
+
+      if (iteration >= targetText.length) clearInterval(interval);
+      iteration += 1 / 3;
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setQuoteID((prev) => (prev + 1 >= quotes.length ? 0 : prev + 1));
-    }, 10000);
+    const clearDecryption = decrypt(title);
 
-    setIntervalID(interval);
+    const autoSlide = setInterval(() => {
+      setQuoteID((prev) => (prev + 1 >= quotes.length ? 0 : prev + 1));
+    }, 12000); // Increased time to allow for reading + animation
 
     return () => {
-      window.clearInterval(interval);
+      clearInterval(autoSlide);
+      clearDecryption();
     };
-  }, [quoteID, quotes.length]);
+  }, [quoteID, title, decrypt, quotes.length]);
+
+  const handleManualNav = (direction: 'next' | 'prev') => {
+    if (direction === 'next') {
+      setQuoteID((prev) => (prev + 1 >= quotes.length ? 0 : prev + 1));
+    } else {
+      setQuoteID((prev) => (prev - 1 < 0 ? quotes.length - 1 : prev - 1));
+    }
+  };
 
   return (
     <Styled.Container>
       <Styled.TextWrapper>
-        <SectionHeader
-          key={quoteID}
-          variant={'small'}
-          headerText={title}
-          margin={'0'}
-          color={'#01bf71'}
-          withGradient
-        />
+        {/* Terminal Header with Bracket Prefix */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Styled.StatusPulse />
+          <SectionHeader
+            variant={'extraSmall'}
+            headerText={`[ ${scrambledTitle} ]`}
+            margin={'0'}
+            color={'#2bff88'}
+          />
+        </div>
+
         <PortfolioParagraph
-          key={quoteID + 1}
-          margin={'1rem 0'}
+          key={quoteID} // Key forces animation refresh in PortfolioParagraph
+          margin={'1.5rem 0'}
           paragraphText={quote}
           withDarkColor={false}
-          variant={'large'}
+          variant={'small'}
           withAnimatedPresence={true}
         />
       </Styled.TextWrapper>
+
       <Styled.ControlsWrapper>
-        <Styled.PrevQuote onClick={proceedToPrevQuote} title="Previous Slide">
+        <Styled.PrevQuote onClick={() => handleManualNav('prev')} title="Previous Slide">
           <FiChevronLeft className={'carousel-icon prev'} />
         </Styled.PrevQuote>
-        <Styled.NextQuote onClick={proceedToNextQuote}>
-          <FiChevronRight className={'carousel-icon next'} title="Next Slide" />
+
+        {/* Current Slide Indicator */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          minWidth: '80px'
+        }}>
+          <span style={{
+            fontFamily: 'JetBrains Mono',
+            fontSize: '10px',
+            color: '#58c7f3',
+            letterSpacing: '1px'
+          }}>
+            DATA_SET
+          </span>
+          <span style={{
+            fontFamily: 'JetBrains Mono',
+            fontSize: '16px',
+            color: '#fff',
+            fontWeight: 'bold'
+          }}>
+            0{quoteID + 1} / 0{quotes.length}
+          </span>
+        </div>
+
+        <Styled.NextQuote onClick={() => handleManualNav('next')} title="Next Slide">
+          <FiChevronRight className={'carousel-icon next'} />
         </Styled.NextQuote>
       </Styled.ControlsWrapper>
     </Styled.Container>

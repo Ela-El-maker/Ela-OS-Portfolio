@@ -7,6 +7,7 @@ import PortfolioParagraph from '../Typography/PortfolioParagraph/PortfolioParagr
 import ActionButton from '../ActionButton/ActionButton';
 import { FiCast, FiGithub } from 'react-icons/fi';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
+import ScrollHint from '../ScrollHint/ScrollHint';
 
 /**
  *Renders full-viewport project slide
@@ -14,6 +15,31 @@ import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver'
  *@param {IHighlightedProject} projectDetails - project details data to be mapped into view
  *@returns {JSX.Element} - Rendered ProjectDesktopSlide component
  */
+const SOURCE_CODE_FEED = `
+import {SystemCore} from '@ela-os/kernel';
+export const ProjectModule = ({ id, status }) => {
+    const [active, setActive] = useState(true);
+    
+    useEffect(() => {
+      SystemCore.initilizeDeployment({
+        id: id,
+        env: 'production',
+        optimization: 'gpu_accelerated'
+      });
+    }, [id]);
+
+ return (
+      <ArchitectureLayer>
+        <ComputeEngine speed="high" />
+        <InterfaceLayer layout="blueprint" />
+      </ArchitectureLayer>
+    );
+  };
+  
+  // REPEATING DATA BUFFER...
+`.repeat(10); // Repeat to fill the scrolling area
+
+
 const ProjectDesktopSlide = ({
   slideNumberImg,
   projectDescription,
@@ -44,6 +70,10 @@ const ProjectDesktopSlide = ({
       {isOnScreen && (
         <>
           <Styled.LeftColumn>
+            <Styled.CodeBackground>
+              {SOURCE_CODE_FEED}
+
+            </Styled.CodeBackground>
             <Styled.Figure>
               <Styled.SlideNumber>
                 {slideNumberImg && (
@@ -57,6 +87,7 @@ const ProjectDesktopSlide = ({
                   />
                 )}
               </Styled.SlideNumber>
+
               <Styled.Figcaption>
                 <h3>{projectTechnologies.join(` ● `)}</h3>
               </Styled.Figcaption>
@@ -66,7 +97,8 @@ const ProjectDesktopSlide = ({
                   height={800}
                   width={800}
                   quality={95}
-                  style={{ objectFit: 'contain' }}
+                  priority
+                  style={{ objectFit: 'contain', zIndex: 1 }}
                   alt={projectTitle}
                 />
               </Styled.ImageWrapper>
@@ -75,7 +107,7 @@ const ProjectDesktopSlide = ({
 
           <Styled.RightColumn>
             <SectionHeader
-              variant={'small'}
+              variant={'extraSmall'}
               headerText={projectTitle}
               margin={'0'}
               color={'#2bff88'}
@@ -91,7 +123,7 @@ const ProjectDesktopSlide = ({
               margin={'2rem 0'}
               paragraphText={projectDescription}
               withDarkColor={false}
-              variant={'large'}
+              variant={'medium'}
               withAnimatedPresence={true}
             />
             <Styled.ButtonsWrapper>
@@ -113,7 +145,10 @@ const ProjectDesktopSlide = ({
           </Styled.RightColumn>
         </>
       )}
+      <ScrollHint />
+
     </Styled.Container>
+
   );
 };
 

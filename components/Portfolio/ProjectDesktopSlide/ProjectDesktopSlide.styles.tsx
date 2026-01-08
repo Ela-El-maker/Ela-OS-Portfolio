@@ -1,59 +1,131 @@
-import styled from 'styled-components';
 import { IHighlightedProject } from '../../../types/portfolio';
 import { slideTop, trackingInExpand } from '../../../design-system/reusableCss';
+import styled, { keyframes } from 'styled-components';
+
 
 type ContainerProps = Pick<IHighlightedProject, 'slideBgColor' | 'slideHeight'>;
 
+
+const scrollCode = keyframes`
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+`;
+
+export const CodeBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%; /* Double height for seamless loop */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(43, 255, 136, 0.07); /* Very subtle green */
+  line-height: 1.2;
+  white-space: pre;
+  pointer-events: none;
+  z-index: 0;
+  padding: 2rem;
+  animation: ${scrollCode} 40s linear infinite;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+`;
+
 export const Container = styled.section<ContainerProps>`
   display: flex;
-  height: 100vh; /* Force exactly one viewport height */
-  min-height: 100vh; 
-  background-color: ${({ slideBgColor }) => slideBgColor};
+  height: 100vh;
+  min-height: 100vh;
+  background-color: transparent; /* Let the global grid show through */
   position: relative;
-  scroll-snap-align: start; /* 'start' is usually more reliable than 'center' for full-page slides */
-  scroll-snap-stop: always; /* Prevents users from skipping 5 slides in one flick */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+
+  /* Subtle vignette to focus on the center content */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, rgba(2, 4, 8, 0.4) 100%);
+    pointer-events: none;
+  }
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
   }
 `;
-/**
- * LEFT COLUMN
- */
+
 export const LeftColumn = styled.div`
-  width: 50%;
-  padding: 6rem 0 3rem 5rem;
+  width: 55%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid rgba(88, 199, 243, 0.1);
 
-  @media ${({ theme }) => theme.media.tablet} {
-    width: 100%;
-    padding: 1rem;
-    height: 60%;
-    align-items: flex-end;
-  }
-  @media ${({ theme }) => theme.media.phone} {
-    height: 45%;
-    align-items: flex-end;
-    justify-content: flex-end;
+  &::before {
+    content: 'MODULE_TYPE: PROJECT_VIEWER';
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: #58c7f3;
+    letter-spacing: 2px;
+    z-index: 2;
   }
 `;
+
 export const ImageWrapper = styled.div`
-  transform: perspective(1500px) rotateY(20deg);
-  transition: transform 1s ease 0s;
+  transform: perspective(1500px) rotateY(15deg);
+  border: 1px solid rgba(43, 255, 136, 0.2);
+  padding: 5px;
+  position: relative;
+  max-width: 65%;
+  max-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  
+  /* The "Corner Hardware" effect */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5px; right: -5px;
+    width: 15px; height: 15px;
+    border-top: 2px solid #2bff88;
+    border-right: 2px solid #2bff88;
+  }
 
-  :hover {
-    transform: perspective(3000px) rotateY(5deg);
+  &:hover {
+    transform: perspective(1500px) rotateY(0deg);
+    border-color: #2bff88;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
-    justify-content: flex-end;
-    align-items: flex-end;
+    max-width: 80%;
+    max-height: 55vh;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    max-width: 90%;
+    max-height: 45vh;
+  }
+`;
+
+export const IconWrapper = styled.ul`
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(88, 199, 243, 0.1);
+  /* Angle-cut corner for industrial feel */
+  clip-path: polygon(0 0, 95% 0, 100% 30%, 100% 100%, 5% 100%, 0 70%);
 `;
 
 export const Figure = styled.figure`
@@ -61,7 +133,14 @@ export const Figure = styled.figure`
   display: flex;
   height: 100%;
   gap: 1rem;
+  will-change: transform;
+
+  img {
+    /* ... existing code ... */
+    pointer-events: none; /* Prevents ghost images from interfering with hover */
+  }
 `;
+
 export const SlideNumber = styled.div`
   z-index: ${({ theme }) => theme.zIndex.lowPriority};
   position: absolute;
@@ -133,13 +212,7 @@ export const RightColumn = styled.div`
   }
 `;
 
-export const IconWrapper = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  animation: ${slideTop} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-`;
+
 export const Icon = styled.li`
   .tech-icon {
     font-size: 2rem;
