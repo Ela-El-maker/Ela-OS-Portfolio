@@ -335,10 +335,9 @@ export const SystemLogWrapper = styled.div`
   }
 
   @media ${({ theme }) => theme.media.phone} {
-    position: static;
-    margin: 2rem auto 3rem;
-    transform: none;
-    display: flex;
-    justify-content: center;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    width: min(90vw, 320px);
   }
 `;

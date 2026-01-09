@@ -10,7 +10,7 @@ const TerminalText = styled.div`
   background: rgba(0, 0, 0, 0.7);
   padding: 1rem;
   border-left: 2px solid #2bff8734;
-  width: 300px;
+    width: clamp(240px, 70vw, 320px);
   pointer-events: none;
 `;
 
