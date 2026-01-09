@@ -45,8 +45,14 @@ export const H1 = styled.h1<HeaderProps>`
 
   animation: ${trackingInExpand} 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+
   @media ${({ theme }) => theme.media.phone} {
-    font-size: 4rem;
-    line-height: 4rem;
+    font-size: 2.2rem;
+    line-height: 1.1;
   }
 `;
