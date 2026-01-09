@@ -25,6 +25,12 @@ export const Container = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2rem 0 3rem;
   }
 `;
 
@@ -54,6 +60,7 @@ export const InteractiveModule = styled.section`
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(88, 199, 243, 0.05);
+  padding: 4rem 0;
 
   .scan-line {
     position: absolute;
@@ -86,6 +93,11 @@ export const InteractiveModule = styled.section`
     flex: 1;
     border-left: none;
     border-bottom: 1px solid rgba(88, 199, 243, 0.1);
+    padding: 3rem 0;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2.5rem 0;
   }
 `;
 
@@ -97,7 +109,18 @@ export const ModuleContent = styled.div`
   @media ${({ theme }) => theme.media.tablet} {
     width: 85%;
     padding: 3rem 0;
+    text-align: center;
   }
+    p {
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+    }
 `;
 
 export const SystemTag = styled.div`

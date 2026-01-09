@@ -35,6 +35,14 @@ export const HealthMonitorOverlay = styled.div`
     height: 100%;
     animation: ${moveWave} 20s linear infinite;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    height: 110px;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    display: none;
+  }
 `;
 
 
@@ -57,6 +65,16 @@ export const TerminalContainer = styled.div`
     background: rgba(88, 199, 243, 0.1);
     animation: ${scanline} 8s linear infinite;
     pointer-events: none;
+  }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    padding: 0 6%;
+    gap: 2.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 0 1.5rem;
   }
 `;
 
@@ -130,6 +148,10 @@ export const Description = styled.p`
     color: #58c7f3;
     font-weight: 600;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 1rem;
+  }
 `;
 
 export const LogTable = styled.div`
@@ -157,6 +179,14 @@ export const LogTable = styled.div`
     color: #58c7f3;
     font-weight: 600;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    .log-row {
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+    }
+  }
 `;
 
 export const VisualDataPane = styled.div`
@@ -166,6 +196,15 @@ export const VisualDataPane = styled.div`
   height: 300px;
   padding-left: 20px;
   border-left: 1px solid rgba(88, 199, 243, 0.2);
+
+  @media (max-width: 1100px) {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(88, 199, 243, 0.2);
+    padding-left: 0;
+    padding-top: 20px;
+    height: auto;
+  }
 `;
 
 export const GridBox = styled.div`
@@ -183,5 +222,9 @@ export const ScrollTextContainer = styled.div`
 
   .scroll-line {
     margin-bottom: 4px;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.55rem;
   }
 `;

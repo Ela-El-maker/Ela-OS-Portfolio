@@ -35,6 +35,14 @@ export const HealthMonitorOverlay = styled.div`
     height: 100%;
     animation: ${moveWave} 20s linear infinite;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    height: 110px;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    display: none;
+  }
 `;
 
 // Update SecondSlideContainer to ensure content stays on top
@@ -52,6 +60,18 @@ export const SecondSlideContainer = styled.div`
     position: relative;
     z-index: 1;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    text-align: left;
+    height: auto;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2.5rem 1.25rem 3rem;
+  }
 `;
 
 
@@ -60,6 +80,11 @@ export const Column = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 100%;
+    padding: 1.5rem 0;
+  }
 `;
 
 export const MetricHeader = styled.span`
@@ -95,6 +120,10 @@ export const CentralDivider = styled.div`
     animation: ${pulse} 2s infinite;
     margin: 20px 0;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    display: none;
+  }
 `;
 
 
@@ -115,6 +144,15 @@ export const TechList = styled.ul`
       content: ">";
       margin-right: 10px;
       opacity: 0.5;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    margin-top: 1.5rem;
+
+    li {
+      font-size: 0.75rem;
+      line-height: 1.4;
     }
   }
 `;

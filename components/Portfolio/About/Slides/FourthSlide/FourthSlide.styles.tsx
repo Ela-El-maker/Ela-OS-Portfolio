@@ -53,6 +53,13 @@ export const StickyWrapper = styled.div`
   align-items: center;
   /* This creates a slight dimming of the background to focus on the system */
   background: radial-gradient(circle at center, rgba(88, 199, 243, 0.05) 0%, transparent 70%);
+
+  @media (max-width: 768px) {
+    position: static;
+    height: auto;
+    padding: 4rem 0;
+    background: none;
+  }
 `;
 
 export const Container = styled.div`
@@ -98,6 +105,10 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 0 1.5rem 4rem;
+
+    .visual-section {
+      order: -1;
+    }
   }
 `;
 
@@ -139,6 +150,11 @@ export const SchematicContainer = styled.div`
   height: clamp(200px, 34vw, 300px);
   margin: 0 auto;
   perspective: 1000px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    height: 240px;
+  }
 `;
 
 export const DataFlowLines = styled.svg`
@@ -170,6 +186,11 @@ export const TechSatellite = styled.div`
   &.sat-1 { top: 10%; right: 10%; animation-delay: 0.8s; }
   &.sat-2 { bottom: 10%; right: 10%; animation-delay: 1.3s; }
   &.sat-3 { bottom: 10%; left: 10%; animation-delay: 1.8s; }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 export const DiagnosticConsole = styled.div`
@@ -193,6 +214,10 @@ export const DiagnosticConsole = styled.div`
     box-shadow: 0 0 10px #58c7f3;
     animation: ${scan} 4s linear infinite;
     z-index: 5;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -235,6 +260,8 @@ export const CentralCore = styled.div`
 
 export const ParagraphGrid = styled.div`
   position: relative;
+  display: grid;
+  gap: 1.5rem;
 
   &::before {
     content: '';
@@ -245,6 +272,12 @@ export const ParagraphGrid = styled.div`
     width: 1px;
     background: rgba(88, 199, 243, 0.15);
     transform: translateX(-50%);
+  }
+
+  @media (max-width: 768px) {
+    &::before {
+      display: none;
+    }
   }
 `;
 
