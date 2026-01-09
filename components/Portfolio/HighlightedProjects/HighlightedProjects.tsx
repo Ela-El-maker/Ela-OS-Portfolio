@@ -18,13 +18,42 @@ const HighlightedProjects = (): JSX.Element => {
 
   // State to track the active title for the floating terminal
   const [activeTitle, setActiveTitle] = React.useState('MANIFEST');
+  const heroRef = React.useRef<HTMLDivElement | null>(null);
+  const slideRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const activeEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (activeEntry) {
+          const nextTitle =
+            activeEntry.target.getAttribute('data-terminal-title') ?? 'MANIFEST';
+          setActiveTitle(nextTitle);
+        }
+      },
+      { threshold: 0.45 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    slideRefs.current.forEach((node) => {
+      if (node) observer.observe(node);
+    });
+
+    return () => observer.disconnect();
+  }, [highlightedProjects.length]);
 
   return (
     <Styled.Container>
       <Navbar isLogoExpanded={true} />
 
       {/* HERO SECTION: The Project Manifest */}
-      <Styled.ProjectsHero>
+      <Styled.ProjectsHero ref={heroRef} data-terminal-title="MANIFEST">
         <Styled.HeroLeftColumn>
           <Styled.SystemTag>BOOT_SEQUENCE // Ela PORTFOLIO_V4.0.1</Styled.SystemTag>
           <SectionHeader
@@ -88,8 +117,11 @@ const HighlightedProjects = (): JSX.Element => {
 
           {/* Wrap each project slide to handle hover for floating terminal */}
           <div
+            ref={(element) => {
+              slideRefs.current[index] = element;
+            }}
+            data-terminal-title={project.projectTitle}
             onMouseEnter={() => setActiveTitle(project.projectTitle)}
-            onMouseLeave={() => setActiveTitle('MANIFEST')}
           >
             <ProjectDesktopSlide {...project} />
           </div>
