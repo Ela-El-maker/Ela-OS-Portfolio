@@ -80,10 +80,40 @@ export const Column = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
     padding: 1.5rem 0;
+
+    h2 {
+      font-size: 1.9rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 1rem;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -93,6 +123,10 @@ export const MetricHeader = styled.span`
   letter-spacing: 2px;
   margin-bottom: 1rem;
   color: rgba(88, 199, 243, 0.5);
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.65rem;
+  }
 `;
 
 
@@ -151,7 +185,7 @@ export const TechList = styled.ul`
     margin-top: 1.5rem;
 
     li {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       line-height: 1.4;
     }
   }

@@ -106,6 +106,15 @@ export const ModuleContent = styled.div`
   z-index: 5;
   transition: transform 0.4s ease;
 
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
   @media ${({ theme }) => theme.media.tablet} {
     width: 85%;
     padding: 3rem 0;
@@ -115,6 +124,7 @@ export const ModuleContent = styled.div`
       text-align: left;
       margin-left: auto;
       margin-right: auto;
+      font-size: 0.95rem;
     }
 
     button {
@@ -122,6 +132,16 @@ export const ModuleContent = styled.div`
       margin-right: auto;
     }
 `;
+
+@media ${ ({ theme }) => theme.media.phone } {
+    h3 {
+    font - size: 1.6rem;
+  }
+
+    p {
+    font - size: 0.9rem;
+  }
+}
 
 export const SystemTag = styled.div`
   font-family: 'JetBrains Mono', monospace;
@@ -137,5 +157,14 @@ export const SystemTag = styled.div`
   svg {
     font-size: 1.1rem;
     filter: drop-shadow(0 0 5px #58c7f3);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+
+    svg {
+      font-size: 1rem;
+    }
   }
 `;

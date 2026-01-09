@@ -125,6 +125,11 @@ export const SystemTag = styled.span`
   border: 1px solid rgba(88, 199, 243, 0.3);
   border-radius: 999px;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
 `;
 
 export const InsightBadge = styled.div`
@@ -141,6 +146,10 @@ export const InsightBadge = styled.div`
   .code-bracket {
     color: #58c7f3;
     font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
   }
 `;
 
@@ -278,6 +287,17 @@ export const ParagraphGrid = styled.div`
     &::before {
       display: none;
     }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 480px) {
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -294,6 +314,10 @@ export const LogContent = styled.div`
     &.warn { color: #ffbd2e; }
     &.error { color: #ff5f56; text-shadow: 0 0 5px rgba(255, 95, 86, 0.3); }
     &.success { color: #27c93f; }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
   }
 `;
 

@@ -43,6 +43,11 @@ export const SystemTag = styled.div`
   letter-spacing: 4px;
   margin-bottom: 0.5rem;
   opacity: 0.7;
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
 `;
 
 export const TimelineWrapper = styled.section`
@@ -185,6 +190,15 @@ export const MilestoneContent = styled.div`
 
   @media ${({ theme }) => theme.media.phone} {
     padding: 1.25rem;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
   }
 `;
 
@@ -208,6 +222,14 @@ export const MilestoneHeader = styled.div`
   @media ${({ theme }) => theme.media.phone} {
     flex-direction: column;
     gap: 0.5rem;
+
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    time {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -221,6 +243,12 @@ export const Tags = styled.div`
     padding: 3px 10px;
     border-radius: 4px;
     background: rgba(88, 199, 243, 0.05);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    span {
+      font-size: 0.6rem;
+    }
   }
 `;
 

@@ -136,6 +136,15 @@ export const GlitchTitle = styled.h1`
   line-height: 0.9;
   letter-spacing: -2px;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 900px) {
+    font-size: clamp(2.5rem, 9vw, 4.5rem);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: clamp(2rem, 12vw, 3.2rem);
+    letter-spacing: -1px;
+  }
 `;
 
 export const Description = styled.p`
