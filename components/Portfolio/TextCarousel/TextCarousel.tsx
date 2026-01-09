@@ -86,30 +86,10 @@ const TextCarousel = ({ quotes }: Props): JSX.Element => {
           <FiChevronLeft className={'carousel-icon prev'} />
         </Styled.PrevQuote>
 
-        {/* Current Slide Indicator */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          minWidth: '80px'
-        }}>
-          <span style={{
-            fontFamily: 'JetBrains Mono',
-            fontSize: '10px',
-            color: '#58c7f3',
-            letterSpacing: '1px'
-          }}>
-            DATA_SET
-          </span>
-          <span style={{
-            fontFamily: 'JetBrains Mono',
-            fontSize: '16px',
-            color: '#fff',
-            fontWeight: 'bold'
-          }}>
-            0{quoteID + 1} / 0{quotes.length}
-          </span>
-        </div>
+        <Styled.Indicator>
+          <span>DATA_SET</span>
+          <span>0{quoteID + 1} / 0{quotes.length}</span>
+        </Styled.Indicator>
 
         <Styled.NextQuote onClick={() => handleManualNav('next')} title="Next Slide">
           <FiChevronRight className={'carousel-icon next'} />
