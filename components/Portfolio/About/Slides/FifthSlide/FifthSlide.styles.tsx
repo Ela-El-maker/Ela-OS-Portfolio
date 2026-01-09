@@ -26,6 +26,14 @@ export const Container = styled.div`
   padding: 10vh 12% 0 12%;
   min-height: 100vh;
   background-color: #020408;
+
+  @media (max-width: 1024px) {
+    padding: 8vh 8% 0;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 6vh 1.5rem 0;
+  }
 `;
 
 export const SystemTag = styled.div`
@@ -35,6 +43,11 @@ export const SystemTag = styled.div`
   letter-spacing: 4px;
   margin-bottom: 0.5rem;
   opacity: 0.7;
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
 `;
 
 export const TimelineWrapper = styled.section`
@@ -55,6 +68,18 @@ export const TimelineWrapper = styled.section`
       width: 100%; height: 200px;
       background: linear-gradient(to bottom, transparent, #2bff88, transparent);
       animation: ${pipeFlow} 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    gap: 3rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    margin-top: 3rem;
+
+    .central-pipe {
+      display: none;
     }
   }
 `;
@@ -126,6 +151,23 @@ export const Milestone = styled.article<{ variant: string }>`
     box-shadow: 0 0 15px #2bff88;
     transform: scale(1.2);
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    gap: 2rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(88, 199, 243, 0.2);
+    gap: 1.25rem;
+
+    .node-point {
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      margin-top: 0;
+    }
+  }
 `;
 
 export const MilestoneContent = styled.div`
@@ -140,6 +182,23 @@ export const MilestoneContent = styled.div`
     background: rgba(88, 199, 243, 0.04);
     border-color: rgba(88, 199, 243, 0.4);
     transform: translateX(15px);
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 1.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 1.25rem;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
   }
 `;
 
@@ -159,6 +218,19 @@ export const MilestoneHeader = styled.div`
     &.archived { color: rgba(255,255,255,0.3); }
     &.active { color: #2bff88; }
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    time {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 export const Tags = styled.div`
@@ -171,6 +243,12 @@ export const Tags = styled.div`
     padding: 3px 10px;
     border-radius: 4px;
     background: rgba(88, 199, 243, 0.05);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    span {
+      font-size: 0.6rem;
+    }
   }
 `;
 

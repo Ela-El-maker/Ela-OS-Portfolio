@@ -25,6 +25,12 @@ export const Container = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
+    padding: 2rem 0;
+    gap: 2rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2rem 0 3rem;
   }
 `;
 
@@ -54,6 +60,7 @@ export const InteractiveModule = styled.section`
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(88, 199, 243, 0.05);
+  padding: 4rem 0;
 
   .scan-line {
     position: absolute;
@@ -80,12 +87,17 @@ export const InteractiveModule = styled.section`
     & > div {
       transform: scale(1.02);
     }
-  }
+  @media ${({ theme }) => theme.media.phone} {
+    h3 {
+      font-size: 1.6rem;
+    }
 
-  @media ${({ theme }) => theme.media.tablet} {
-    flex: 1;
-    border-left: none;
-    border-bottom: 1px solid rgba(88, 199, 243, 0.1);
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2.5rem 0;
   }
 `;
 
@@ -94,9 +106,41 @@ export const ModuleContent = styled.div`
   z-index: 5;
   transition: transform 0.4s ease;
 
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
   @media ${({ theme }) => theme.media.tablet} {
     width: 85%;
     padding: 3rem 0;
+    text-align: center;
+
+    p {
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.95rem;
+    }
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -114,5 +158,14 @@ export const SystemTag = styled.div`
   svg {
     font-size: 1.1rem;
     filter: drop-shadow(0 0 5px #58c7f3);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+
+    svg {
+      font-size: 1rem;
+    }
   }
 `;

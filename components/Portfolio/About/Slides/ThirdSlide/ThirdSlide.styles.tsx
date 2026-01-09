@@ -24,6 +24,25 @@ export const RegistryHeader = styled.div`
   border-left: 3px solid #58c7f3;
   padding-left: 25px;
   margin-bottom: 3rem;
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const ModuleGrid = styled.div`
@@ -53,6 +72,10 @@ export const ModuleCard = styled.div`
     border-color: #58c7f3;
     background: rgba(88, 199, 243, 0.05);
   }
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 
@@ -77,6 +100,20 @@ export const CardHeader = styled.div`
     color: #58c7f3;
     opacity: 0.6;
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .type {
+      font-size: 0.55rem;
+    }
+  }
 `;
 
 export const ToolList = styled.div`
@@ -90,7 +127,13 @@ export const ToolRow = styled.div`
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 0;
-  border-bottom: 15px solid rgba(88, 199, 243, 0.08);
+  border-bottom: 1px solid rgba(88, 199, 243, 0.15);
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 `;
 
 
@@ -98,6 +141,10 @@ export const IconSlot = styled.div`
   width: 64px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 640px) {
+    width: auto;
+  }
 `;
 
 export const ToolMeta = styled.div`
@@ -112,6 +159,10 @@ export const ToolName = styled.span`
   font-size: 0.85rem;
   color: #e0f2ff;
   letter-spacing: 0.05em;
+
+  @media (max-width: 640px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const ProficiencyBar = styled.div`
@@ -137,6 +188,11 @@ export const ProficiencyValue = styled.span`
   color: rgba(88, 199, 243, 0.8);
   min-width: 48px;
   text-align: right;
+
+  @media (max-width: 640px) {
+    text-align: left;
+    font-size: 0.8rem;
+  }
 `;
 
 export const TerminalFooter = styled.div`
@@ -146,5 +202,12 @@ export const TerminalFooter = styled.div`
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   color: rgba(88, 199, 243, 0.4);
+
+  @media (max-width: 768px) {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
 `;
 // Legacy icon grid removed in favor of textual list with proficiency bar.
