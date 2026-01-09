@@ -1,7 +1,12 @@
 import React, { ReactNode } from 'react';
 import Resume from '../Portfolio/Resume/Resume';
-import { useRouter } from 'next/router';
 import Terminal from '../Apps/Terminal/Terminal';
+
+const navigateTo = (path: string) => {
+  if (typeof window !== 'undefined') {
+    window.location.href = path;
+  }
+};
 
 /**
  * Custom hook that returns prepared recommended apps config
@@ -11,7 +16,6 @@ import Terminal from '../Apps/Terminal/Terminal';
 export const useRecommendedConfig = (): {
   recommendedFiles: IRecommendedFile[];
 } => {
-  const router = useRouter();
   const recommendedFiles: IRecommendedFile[] = [
     {
       id: 1,
@@ -36,7 +40,7 @@ export const useRecommendedConfig = (): {
       fileName: 'My Portfolio',
       details: 'August 26',
       icon: '/assets/portfolio/skills/react-original.svg',
-      action: () => router.push('/portfolio'),
+      action: () => navigateTo('/portfolio'),
       iconSize: { height: 40, width: 40 },
       willOpenWindowWith: null,
     },
@@ -45,7 +49,7 @@ export const useRecommendedConfig = (): {
       fileName: 'Recent Projects',
       details: 'August 25',
       icon: '/assets/icons/recommended/power-point.png',
-      action: () => router.push('/portfolio/projects'),
+      action: () => navigateTo('/portfolio/projects'),
       iconSize: { height: 40, width: 40 },
       willOpenWindowWith: null,
     },

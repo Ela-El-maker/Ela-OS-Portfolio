@@ -3,7 +3,6 @@ import { IDesktopApp } from '../../types/ui/desktop-app';
 import Figma from '../Apps/Figma/Figma';
 import VsCode from '../Apps/VsCode/VsCode';
 import Likes from '../Likes/Likes';
-import { useRouter } from 'next/router';
 import Resume from '../Portfolio/Resume/Resume';
 import TrashBin from '../Folders/TrashBin/TrashBin';
 import CommentsForm from '../CommentsForm/CommentsForm';
@@ -19,13 +18,18 @@ import Terminal from '../Apps/Terminal/Terminal';
  * @function useDesktopApps
  * @returns {object} - object with array of icon variants with already specified type of sorting
  * */
+const navigateTo = (path: string) => {
+  if (typeof window !== 'undefined') {
+    window.location.href = path;
+  }
+};
+
 export const useDesktopApps = (): {
   sortedAlphabetically: IDesktopApp[];
   sortedByDate: IDesktopApp[];
   sortedBySize: IDesktopApp[];
   appsInTrashBin: IDesktopApp[];
 } => {
-  const router = useRouter();
   const { removedApps, compressedApps } = useTypedSelector((state) => state.ui);
 
   const initialDesktopAppsList: IDesktopApp[] = [
@@ -76,7 +80,7 @@ export const useDesktopApps = (): {
       variant: 'desktop',
       iconSrc: '/assets/portfolio/skills/react-original.svg',
       iconSize: { width: 40, height: 40 },
-      action: () => router.push('/portfolio'),
+      action: () => navigateTo('/portfolio'),
     },
     {
       id: 6,
@@ -94,7 +98,7 @@ export const useDesktopApps = (): {
       variant: 'desktop',
       iconSrc: '/assets/icons/recommended/power-point.png',
       iconSize: { width: 40, height: 40 },
-      action: () => router.push('/portfolio/projects'),
+      action: () => navigateTo('/portfolio/projects'),
     },
     {
       id: 8,

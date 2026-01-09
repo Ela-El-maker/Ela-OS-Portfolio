@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import * as Styled from './WithSparkles.styles';
 import { generateSparkle, ISparkle } from './WithSparkles.config';
 import { useRandomInterval } from '../../../hooks/useRandomInterval';
@@ -8,6 +8,7 @@ import { range } from '../../../utils';
 
 interface Props {
   color: string;
+  children?: ReactNode;
 }
 
 /**

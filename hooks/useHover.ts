@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
  *@returns {boolean} isHovering - the hook returns a ref and a boolean value indicating whether the element with that ref is currently being hovered
  */
 
-export default function useHover(ref: React.RefObject<HTMLElement>): boolean {
+export default function useHover(ref: React.RefObject<HTMLElement | null>): boolean {
   const [isHovering, setIsHovering] = useState(false);
 
   const on = () => setIsHovering(true);

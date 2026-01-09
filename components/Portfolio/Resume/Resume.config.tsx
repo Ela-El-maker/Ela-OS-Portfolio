@@ -1,262 +1,125 @@
-export const keyTechSkills: { text: string; iconUrl: string }[] = [
-  {
-    text: 'JavaScript',
-    iconUrl: '/assets/portfolio/skills/javascript-original.svg',
-  },
+import { IProfessionalExperience } from './Resume.types';
 
-  {
-    text: 'Node.js',
-    iconUrl: '/assets/portfolio/skills/nodejs-original.svg',
-  },
-  {
-    text: 'PWA',
-    iconUrl: '/assets/portfolio/skills/pwa.png',
-  },
-  {
-    text: 'Core Web Vitals',
-    iconUrl: '/assets/portfolio/skills/vitals.webp',
-  },
-  {
-    text: 'TypeScript',
-    iconUrl: '/assets/portfolio/skills/typescript-original.svg',
-  },
-  {
-    text: 'React',
-    iconUrl: '/assets/portfolio/skills/react-original.svg',
-  },
-  {
-    text: 'Next.js',
-    iconUrl: '/assets/portfolio/skills/nextjs-original.svg',
-  },
-  {
-    text: 'Rust',
-    iconUrl: '/assets/portfolio/skills/rust-original.svg',
-  },
+export const keyTechSkills = [
+  { text: 'C++ / C (Systems)', iconUrl: '/assets/portfolio/skills/cpp.svg' },
+  { text: 'Linux / Kernel Basics', iconUrl: '/assets/portfolio/skills/linux.svg' },
+  { text: 'FastAPI / Python (Async)', iconUrl: '/assets/portfolio/skills/fastapi.svg' },
+  { text: 'Laravel / PHP', iconUrl: '/assets/portfolio/skills/laravel.svg' },
+  { text: 'TypeScript / Next.js', iconUrl: '/assets/portfolio/skills/typescript-original.svg' },
+  { text: 'Flutter / Dart', iconUrl: '/assets/portfolio/skills/flutter.svg' },
+  { text: 'Docker & Infrastructure', iconUrl: '/assets/portfolio/skills/docker.svg' },
+  { text: 'Google Cloud Platforms', iconUrl: '/assets/portfolio/skills/gcp.svg' },
+  { text: 'Microsoft Azure', iconUrl: '/assets/portfolio/skills/azure.svg' },
+
 ];
 
-export const otherSkills: { text: string; iconUrl: string }[] = [
-  {
-    text: 'Web Assembly',
-    iconUrl: '/assets/portfolio/skills/wasm.svg',
-  },
-
-  {
-    text: 'AWS',
-    iconUrl: '/assets/portfolio/skills/aws.svg',
-  },
-  {
-    text: 'Performance Optimization',
-    iconUrl: '/assets/portfolio/skills/page-speed.png',
-  },
-  {
-    text: 'Software Testing',
-    iconUrl: '/assets/portfolio/skills/developer.png',
-  },
-  {
-    text: 'Responsive Web Design',
-    iconUrl: '/assets/portfolio/skills/responsive.png',
-  },
-  {
-    text: 'GitHub',
-    iconUrl: '/assets/portfolio/skills/github-original.svg',
-  },
-  {
-    text: 'SE Optimization',
-    iconUrl: '/assets/portfolio/skills/seo.png',
-  },
-  {
-    text: 'Git',
-    iconUrl: '/assets/portfolio/skills/git-original.svg',
-  },
-  {
-    text: 'Figma',
-    iconUrl: '/assets/portfolio/skills/figma-original.svg',
-  },
-  {
-    text: 'Vite',
-    iconUrl: '/assets/portfolio/skills/vitejs-original.svg',
-  },
-  {
-    text: 'Webpack, Lerna, Parcel',
-    iconUrl: '/assets/portfolio/skills/webpack-original.svg',
-  },
-  {
-    text: 'CSS-in-JS',
-    iconUrl: '/assets/portfolio/skills/css3-original.svg',
-  },
-  {
-    text: 'Sass',
-    iconUrl: '/assets/portfolio/skills/sass-original.svg',
-  },
-  {
-    text: 'Redux',
-    iconUrl: '/assets/portfolio/skills/redux-original.svg',
-  },
-  {
-    text: 'Storybook',
-    iconUrl: '/assets/portfolio/skills/storybook.png',
-  },
-  {
-    text: 'Jest',
-    iconUrl: '/assets/portfolio/skills/jest-plain.svg',
-  },
-  {
-    text: 'NestJS',
-    iconUrl: '/assets/portfolio/skills/nestjs-original.svg',
-  },
-  {
-    text: 'Express',
-    iconUrl: '/assets/portfolio/skills/express-original.svg',
-  },
+export const otherSkills = [
+  { text: 'Hardware Surgery & Diagnostics', iconUrl: '/assets/portfolio/skills/hardware.png' },
+  { text: 'Network Monitoring (Datacenter)', iconUrl: '/assets/portfolio/skills/network.png' },
+  { text: 'Cryptographic Identity (Ed25519)', iconUrl: '/assets/portfolio/skills/security.png' },
+  { text: 'M-Pesa / Payment Gateways', iconUrl: '/assets/portfolio/skills/mpesa.png' },
+  { text: 'Enterprise RBAC Design', iconUrl: '/assets/portfolio/skills/performance.png' },
+  { text: 'Windows Internals (Safe/Long Mode)', iconUrl: '/assets/portfolio/skills/re.png' },
+  { text: 'Reverse Engineering', iconUrl: '/assets/portfolio/skills/git-original1.svg' },
+  { text: 'Compiler Theory (Emerging)', iconUrl: '/assets/portfolio/skills/mysql-original.svg' },
 ];
 
 export const professionalExperience: IProfessionalExperience[] = [
   {
     variant: 'withResponsibilities',
-    company: 'Oracle',
-    companyImg: '/assets/portfolio/oracle-logo.png',
-    role: 'Software Development Project Lead',
+    company: 'Business Systems Architects Ltd',
+    companyImg: '/assets/portfolio/bsa-logo.png',
+    role: 'Technical Operations Support',
+    timeFrame: '2025 - 2026',
     shortSummary:
-      'I currently lead the frontend development of a modernized version of Oracle CPQ (Configure, Price, Quote). A dynamic application that helps over 500 large customers to configure complex products and services, price them according to the rules and constraints, and generate quotes and proposals.',
-    timeFrame: '2023-Present',
+      'Supported operational systems in a structured production environment with a focus on reliability, diagnostics, and issue resolution.',
     responsibilities: [
       {
-        text: '"Outstanding Contribution" award for the contribution to the Oracle CPQ project',
-        iconUrl: '/assets/portfolio/star.svg',
-        url: '/assets/portfolio/oracle-award.pdf',
-      },
-      {
-        text: 'Key role in re-implementation of Oracle CPQ',
-        iconUrl: '/assets/portfolio/check.svg',
-        url: 'https://www.oracle.com/ca-en/cx/sales/cpq/',
-      },
-      {
-        text: 'Improved peformance and load time of the application by over 50% targeting Core Web Vitals',
+        text: 'Handled OS-level troubleshooting, system configuration issues, and hardware-software failures across production machines.',
         iconUrl: '/assets/portfolio/check.svg',
       },
       {
-        text: 'Built migration tools for helping customers to seamlessly migrate from legacy CPQ to the new version',
+        text: 'Maintained uptime-sensitive systems and responded to operational incidents under time constraints.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Improved internal technical workflows through better diagnostics and documentation.',
         iconUrl: '/assets/portfolio/check.svg',
       },
     ],
   },
-  {
-    variant: 'withResponsibilities',
-    company: 'Oracle',
-    companyImg: '/assets/portfolio/oracle-logo.png',
-    role: 'Senior Software Engineer',
-    shortSummary: `As a senior engineer, I have contributed to the biggest customer facing applications and services of Oracle CX. I prototyped, designed and helped my team to build a Zoom application integration for Oracle CX Sales (CRM Selling System) from scratch. Played a key role in the modernization and re-implementation of biggest Oracle's CRM - CX Sales.`,
-    timeFrame: '2021-2023',
-    responsibilities: [
-      {
-        text: 'Key contribution to the modernization of the biggest Oracle CRM - CX Sales',
-        iconUrl: '/assets/portfolio/check.svg',
-        url: 'https://www.oracle.com/ca-en/cx/sales/',
-      },
-      {
-        text: 'Architeched and built a dynamic application in embedded Zoom environment for Oracle CX Sales CRM',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-      {
-        text: 'Helped to identify and fix performance bottlenecks in the modernized application',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-      {
-        text: 'Prototyped and build a number of POC applications for R&D at Oracle',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-    ],
-  },
-  {
-    variant: 'withResponsibilities',
-    company: 'Chernivtsi National University',
-    companyImg: '/assets/portfolio/uchnu.png',
-    role: 'Full-stack Developer (Contractor)',
-    shortSummary:
-      'I worked at Chernivtsi National University on a number of educational and Web projects as a front and back end developer. I architected and constructed solutions daily used by tens of thousands of students and thousands of employees.',
-    timeFrame: '2019-2021',
-    responsibilities: [
-      {
-        text: 'Use bleeding-edge JavaScript solutions to deliver the best imaginable user experience',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-      {
-        text: 'Construct scalable, performant and inclusive Web solutions for customers.',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-      {
-        text: 'Employ the best practices in developing and testing software',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-      {
-        text: 'Supervise, mentor and advise junior colleagues.',
-        iconUrl: '/assets/portfolio/check.svg',
-      },
-    ],
-  },
-  {
-    variant: 'withResponsibilities',
-    company: 'Chernivtsi National University',
-    companyImg: '/assets/portfolio/uchnu.png',
-    role: 'Applied Scientist',
-    shortSummary:
-      'I worked in an interdisplinary international research team on the development of cutting-edge medical image processing techniques. I have published a number of papers in high-impact journals and conferences.',
-    timeFrame: '2016-2019',
-    responsibilities: [
-      {
-        text: 'Google Scholar Profile',
-        iconUrl: '/assets/portfolio/check.svg',
-        url: 'https://scholar.google.ca/citations?user=Wu7U4yoAAAAJ&hl=en&oi=ao',
-      },
-      {
-        text: 'Publication in Nature | Scientific Reports',
-        iconUrl: '/assets/portfolio/quote.svg',
-        url: 'https://www.nature.com/articles/s41598-021-83986-4',
-      },
-    ],
-  },
-  {
-    variant: 'withResponsibilities',
-    company: 'University of Oulu, Finland',
-    companyImg: '/assets/portfolio/uoulu.png',
-    role: 'Postdoc Research Scientist',
-    shortSummary:
-      'Participated in projects centered on the development of non-invasive cancer-detection algorithms. During the projects, I\n' +
-      'expanded my horizons in machine learning and learned various image processing algorithms and methods.',
-    timeFrame: '2017 - 2019',
-    responsibilities: [
-      {
-        text: 'Publication in Nature | Scientific Reports',
-        iconUrl: '/assets/portfolio/quote.svg',
-        url: 'https://www.nature.com/articles/s41598-021-83986-4',
-      },
-    ],
-  },
-  {
-    variant: 'simple',
-    company: 'CNRS, Ecole Polytechnique, France',
-    companyImg: '/assets/portfolio/uecole.png',
-    role: 'Postdoc Research Scientist',
-    shortSummary: `This project was supported by the European Union's Horizon research and innovation programme under the Marie Skłodowska-Curie grant agreement and was aimed on the development of cutting-edge medical image processing techniques`,
-    timeFrame: '2016 - 2017',
-  },
-];
 
-export type IProfessionalExperience =
-  | {
-      variant: 'withResponsibilities';
-      company: string;
-      companyImg: string;
-      role: string;
-      timeFrame: string;
-      shortSummary: string;
-      responsibilities: { text: string; iconUrl: string; url?: string }[];
-    }
-  | {
-      variant: 'simple';
-      role: string;
-      company: string;
-      companyImg: string;
-      timeFrame: string;
-      shortSummary: string;
-    };
+  {
+    variant: 'withResponsibilities',
+    company: 'Daystar University',
+    companyImg: '/assets/portfolio/daystar.png',
+    role: 'ICT Intern – Network & Systems Operations',
+    timeFrame: '2021 - 2022',
+    shortSummary:
+      'Worked as part of the university IT and network operations team supporting campus-wide infrastructure, computer labs, and data center operations.',
+    responsibilities: [
+      {
+        text: 'Installed, terminated, and maintained structured network cabling across computer labs, offices, and academic buildings.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Configured and monitored switches, access points, and campus Wi-Fi infrastructure, identifying outages and degraded segments.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Worked inside the university data center monitoring traffic, uptime, and system health across the campus network.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Refurbished and rebuilt over 300 legacy desktop systems, salvaging components such as RAM, storage, power supplies, and cabling to deploy two fully functional computer labs.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Performed mass OS deployments and upgrades from Windows 7/8/10 to Windows 11, handling data recovery and user migration.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Deployed Linux on legacy hardware where required to improve performance and extend system lifespan.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+    ],
+  },
+  {
+    variant: 'withResponsibilities',
+    company: 'Independent Systems, Hardware & Software Engineering',
+    companyImg: '/assets/portfolio/projects.png',
+    role: 'Systems & Software Engineer',
+    timeFrame: '2021 - Present',
+    shortSummary:
+      'Built a long-running independent practice spanning hardware repair, operating systems, networking fundamentals, and full-stack software development. This work evolved organically from hands-on laptop repair for students into designing and building complete software systems to understand modern platforms end-to-end.',
+    responsibilities: [
+      {
+        text: 'Diagnosed, repaired, and optimized hundreds of personal computing systems, handling OS corruption, boot failures, storage issues, and performance bottlenecks across Windows and Linux.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Performed data recovery for students across multiple academic departments, managing disk failures, partition loss, and unsafe shutdown scenarios.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Built full-stack systems including job portals, RBAC-controlled platforms, and e-commerce systems to study real-world enterprise architecture patterns.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Implemented real payment workflows using M-Pesa Daraja API, PayPal, and Paystack, handling authentication, callbacks, and transaction verification.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Developed mobile applications using Flutter, including productivity tools and service-oriented applications.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+      {
+        text: 'Applied systems-first thinking across hardware, OS, network behavior, and application layers to understand how failures propagate and how resilient systems are built.',
+        iconUrl: '/assets/portfolio/check.svg',
+      },
+    ],
+  }
+
+
+
+];

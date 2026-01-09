@@ -11,7 +11,7 @@ export interface IHighlightedProject {
   slideBgColor: string;
   slideHeight: string;
   githubLink?: string;
-  liveLink: string;
+  liveLink?: string;
 }
 
 export interface ICarouselQuote {

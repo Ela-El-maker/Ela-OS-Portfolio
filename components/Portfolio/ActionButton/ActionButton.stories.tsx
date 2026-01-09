@@ -1,19 +1,34 @@
-import { Story } from '@storybook/react';
-import ActionButton, { Props } from './ActionButton';
+import type { Meta, StoryObj } from '@storybook/react';
+import ActionButton from './ActionButton';
+import { FiCast } from 'react-icons/fi';
 
-export default {
+const meta: Meta<typeof ActionButton> = {
   title: 'Portfolio/ActionButton',
   component: ActionButton,
 };
 
-const Template: Story<Props> = (args) => <ActionButton {...args} />;
+export default meta;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  buttonText: 'Click Me',
+type Story = StoryObj<typeof ActionButton>;
+
+export const Primary: Story = {
+  args: {
+    buttonText: 'Explore Project',
+    icon: <FiCast className="action-icon" />,
+  },
 };
-export const Loading = Template.bind({});
-Loading.args = {
-  buttonText: 'Click Me',
-  isLoading: true,
+
+export const Loading: Story = {
+  args: {
+    ...Primary.args,
+    isLoading: true,
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    ...Primary.args,
+    renderAsLink: true,
+    href: 'https://github.com',
+  },
 };

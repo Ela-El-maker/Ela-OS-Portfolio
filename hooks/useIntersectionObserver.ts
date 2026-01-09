@@ -16,7 +16,7 @@ interface IntersectionObserverOptions {
  *@returns {boolean} isElementVisible - the hook returns a boolean value whether the element in viewport
  */
 export const useIntersectionObserver = (
-  ref: null | RefObject<HTMLDivElement>,
+  ref: null | RefObject<HTMLDivElement | null>,
   options: IntersectionObserverOptions
 ): boolean[] => {
   const [isElementVisible, setIsElementVisible] = useState(false);

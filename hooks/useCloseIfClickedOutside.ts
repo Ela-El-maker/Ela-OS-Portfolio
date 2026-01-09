@@ -16,7 +16,7 @@ export const useCloseModalIfClickedOutside = ({
   closeModalFunction,
 }: {
   isModalOpen: boolean;
-  modalRef: React.RefObject<HTMLDivElement>;
+  modalRef: React.RefObject<HTMLDivElement | null>;
   closeModalFunction: () => void;
 }): void => {
   useEffect(() => {

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 import Trmnl from 'terminal-in-react';
 import { useTerminalConfig } from './Terminal.config';
@@ -22,13 +21,10 @@ const Terminal = (): JSX.Element => {
     sad,
   } = useTerminalConfig();
 
-  const router = useRouter();
-
-  const redirectToPortfolio = async () => {
-    return await router.push('/portfolio');
-  };
-  const redirectToProjects = async () => {
-    return await router.push('/portfolio/projects');
+  const redirectTo = (path: string) => {
+    if (typeof window !== 'undefined') {
+      window.location.href = path;
+    }
   };
 
   return (
@@ -47,8 +43,8 @@ const Terminal = (): JSX.Element => {
           showmsg: () => greetingMessage,
           hack: () => hack,
           popup: () => alert('hello'),
-          portfolio: redirectToPortfolio,
-          projects: redirectToProjects,
+          portfolio: () => redirectTo('/portfolio'),
+          projects: () => redirectTo('/portfolio/projects'),
           SECRET_COMMAND: () => {
             openLanding();
             return sad;

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import * as Styled from './DesktopLayout.styles';
 import Head from 'next/head';
 import SystemTray from '../SystemTray/SystemTray';
@@ -8,6 +8,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 export interface Props {
   title: string;
   entranceAnimationDelay: number;
+  children?: ReactNode;
 }
 
 /**

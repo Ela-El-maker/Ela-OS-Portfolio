@@ -9,49 +9,69 @@ import ScrollHint from '../ScrollHint/ScrollHint';
 import ProjectDesktopSlide from '../ProjectDesktopSlide/ProjectDesktopSlide';
 import ProjectDetailsSlide from '../ProjectDetailsSlide/ProjectDetailsSlide';
 import WaveDivider from '../WaveDivider/WaveDivider';
-import {
-  opticsProjectDetailQuotes,
-  projectDetailsQuotes,
-} from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
+import { elaOsProjectDetailQuotes } from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
+import { SystemLog } from './SystemLog';
 
 const HighlightedProjects = (): JSX.Element => {
   const { highlightedProjects } = useHighlightedProjectsData();
+  const lastProject = highlightedProjects[highlightedProjects.length - 1];
+
+  // State to track the active title for the floating terminal
+  const [activeTitle, setActiveTitle] = React.useState('MANIFEST');
 
   return (
     <Styled.Container>
       <Navbar isLogoExpanded={true} />
-      
+
       {/* HERO SECTION: The Project Manifest */}
       <Styled.ProjectsHero>
         <Styled.HeroLeftColumn>
-          <Styled.SystemTag>PROJECT_MANIFEST // SELECTED_WORKS</Styled.SystemTag>
+          <Styled.SystemTag>BOOT_SEQUENCE // Ela PORTFOLIO_V4.0.1</Styled.SystemTag>
           <SectionHeader
-            variant={'medium'}
-            headerText={`Selected Projects`}
+            variant={'small'}
+            headerText={`PROJECT MANIFEST`}
             margin={'0'}
-            color={'#2bff88'}
+            color={'#fff'}
           />
-          <PortfolioParagraph
-            margin={'2rem 0'}
-            paragraphText={`Engineering robust solutions across diverse environments. Note: Some enterprise-level work is restricted due to NDAs; featured here are personal architectures and shipped products.`}
-            withDarkColor={false}
-            variant={'large'}
-            withAnimatedPresence
-          />
+          <div style={{ borderLeft: '2px solid #2bff88', paddingLeft: '2rem' }}>
+            <PortfolioParagraph
+              margin={'2rem 0'}
+              paragraphText={`High-integrity system architectures and frontend deployments. Technical documentation and source code available via integrated terminal links below.`}
+              withDarkColor={false}
+              variant={'large'}
+              withAnimatedPresence
+            />
+          </div>
         </Styled.HeroLeftColumn>
 
         <Styled.HeroRightColumn>
-          <Styled.ImageContainer position={{ top: '5%', right: '5%' }} className={'laptop-wrapper'}>
-            <Styled.FloatingImgContainer variant={'laptop'}>
-              <Image src={'/assets/portfolio/landing-laptop.png'} height={800} width={800} alt={'IDE Architecture'} priority className={'laptop'} />
-            </Styled.FloatingImgContainer>
-          </Styled.ImageContainer>
-          
-          <Styled.ImageContainer position={{ top: '40%', right: '15%' }} className={'mobile-wrapper'}>
-            <Styled.FloatingImgContainer variant={'phone'}>
-              <Image src={'/assets/portfolio/landing-mobile.png'} height={450} width={350} alt={'Mobile Interface'} priority className={'mobile'} />
-            </Styled.FloatingImgContainer>
-          </Styled.ImageContainer>
+          <Styled.HolographicCore>
+            {/* Concentric diagnostic rings */}
+            <Styled.RadarCircle size="450px" delay="0s" />
+            <Styled.RadarCircle size="350px" delay="1s" />
+            <Styled.RadarCircle size="250px" delay="2s" />
+
+            {/* The 3D Wireframe Cube */}
+            <Styled.Cube>
+              <div className="front" />
+              <div className="back" />
+              <div className="right" />
+              <div className="left" />
+              <div className="top" />
+              <div className="bottom" />
+            </Styled.Cube>
+
+            {/* Metadata Floating Labels */}
+            <div style={{
+              position: 'absolute',
+              bottom: '-20%',
+              fontFamily: 'JetBrains Mono',
+              color: '#58c7f3',
+              fontSize: '12px'
+            }}>
+              [ CORE_ENGINE_ACTIVE: 100% ]
+            </div>
+          </Styled.HolographicCore>
         </Styled.HeroRightColumn>
 
         <ScrollHint />
@@ -60,33 +80,51 @@ const HighlightedProjects = (): JSX.Element => {
       {/* PROJECT DEPLOYMENTS */}
       {highlightedProjects.map((project, index) => (
         <React.Fragment key={project.projectTitle}>
-          <ProjectDesktopSlide {...project} />
-          
-          {/* Add extra details for specific high-impact projects */}
-          {index === 2 && (
-             <ProjectDetailsSlide
-               slideHeight={'100vh'}
-               slideBgColor={'#010606'}
-               projectName={project.projectTitle}
-               projectMobileImg={project.projectMobileImg}
-               projectQuotes={projectDetailsQuotes}
-             />
-          )}
-          
-          {index === 3 && (
-            <>
-              <WaveDivider waveImg={'/assets/portfolio/blob-1.svg'} dividerHeight={'150px'} />
-              <ProjectDetailsSlide
-                slideHeight={'100vh'}
-                slideBgColor={'#4831d4'}
-                projectName={project.projectTitle}
-                projectMobileImg={project.projectMobileImg}
-                projectQuotes={opticsProjectDetailQuotes}
-              />
-            </>
-          )}
+          {/* Metadata Ribbon above each slide */}
+          <div style={{
+            background: '#0a0c10',
+            padding: '5px 20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            borderTop: '1px solid #1a1d23'
+          }}>
+            <span style={{ fontFamily: 'JetBrains Mono', fontSize: '10px', color: '#58c7f3' }}>
+              DEPLOY_ID: {index + 1}00-ALPHA
+            </span>
+            <span style={{ fontFamily: 'JetBrains Mono', fontSize: '10px', color: '#2bff88' }}>
+              STATUS: OPERATIONAL // V.2026.04
+            </span>
+          </div>
+
+          {/* Wrap each project slide to handle hover for floating terminal */}
+          <div
+            onMouseEnter={() => setActiveTitle(project.projectTitle)}
+            onMouseLeave={() => setActiveTitle('MANIFEST')}
+          >
+            <ProjectDesktopSlide {...project} />
+          </div>
+
         </React.Fragment>
       ))}
+
+      {/* FINAL DETAILS SLIDE AFTER ALL PROJECTS */}
+      {lastProject && (
+        <Styled.SnapWrapper>
+          <WaveDivider waveImg={'/assets/portfolio/blob-1.svg'} dividerHeight={'150px'} />
+          <ProjectDetailsSlide
+            slideHeight={'calc(100% - 150px)'}
+            slideBgColor={'#0a0c10'}
+            projectName={lastProject.projectTitle}
+            projectMobileImg={lastProject.projectMobileImg}
+            projectQuotes={elaOsProjectDetailQuotes}
+          />
+        </Styled.SnapWrapper>
+      )}
+
+      {/* Fixed Terminal UI */}
+      <div style={{ position: 'fixed', bottom: '40px', left: '40px', zIndex: 100 }}>
+        <SystemLog text={activeTitle} />
+      </div>
     </Styled.Container>
   );
 };

@@ -1,14 +1,26 @@
 import React from 'react';
 import {
-  SiElasticsearch,
   SiJavascript,
-  SiMongodb,
-  SiNextdotjs,
+  SiLinux,
   SiNodedotjs,
   SiReact,
-  SiRedux,
-  SiStorybook,
+  SiNextdotjs,
+  SiMongodb,
   SiTypescript,
+  SiCplusplus,
+  SiFlutter,
+  SiLaravel,
+  SiPhp,
+  SiFlask,
+  SiQt,
+  SiPython,
+  SiGooglecloud,
+  SiBootstrap,
+  SiFastapi,
+  SiC,
+  SiDocker,
+  SiMysql,
+  SiTailwindcss,
 } from 'react-icons/si';
 import { IHighlightedProject } from '../../../types/portfolio';
 
@@ -17,107 +29,145 @@ export const useHighlightedProjectsData = (): {
 } => {
   const highlightedProjects: IHighlightedProject[] = [
     {
-      slideNumberImg: '/assets/portfolio/1.svg',
-      projectTitle: 'Oracle CPQ',
-      projectDescription: `I currently lead the frontend development of a modernized version of Oracle CPQ (Configure, Price, Quote). A dynamic application that helps over 500 large customers to configure complex products and services, price them according to the rules and constraints, and generate quotes and proposals.
-        `,
+      slideNumberImg: '/assets/portfolio/01.svg',
+      projectTitle: 'High-Resilience Device Control (EDR)',
+      projectDescription: `
+        Friction: Low-resource institutions often lack the infrastructure to secure and manage hardware remotely in high-latency environments.
+        Logic: Engineered a multi-layered system using C++ for Kernel-level operations (IOCTL) and FastAPI for real-time WSS orchestration.
+        Leverage: Created a unified, cryptographically secure control plane that manages Windows devices regardless of local network constraints.
+              `,
       slideHeight: '100vh',
-      projectImg: '/assets/portfolio/orcl/orcl.png',
-      projectMobileImg: '/assets/portfolio/orcl/oracle-cpq.webp',
-      liveLink: 'https://www.oracle.com/ca-en/cx/sales/cpq',
+      projectImg: '/assets/portfolio/projects/padlock.png',
+      projectMobileImg: '/assets/portfolio/projects/padlock.png',
       projectTechnologies: [
-        'Javascript',
-        'Web Components',
-        'Service Workers',
-        'Redux',
+        'C++/C (Kernel)',
+        'FastAPI/Laravel',
       ],
-
-      slideBgColor: '#010606',
+      slideBgColor: '#050505',
+      liveLink: undefined,
+      githubLink: 'https://github.com/Ela-El-maker/secure-device-control',
       technologyIcons: [
-        <SiTypescript key={1} className={'tech-icon'} />,
-        <SiJavascript key={2} className={'tech-icon'} />,
-        <SiRedux key={4} className={'tech-icon'} />,
-        <SiMongodb key={5} className={'tech-icon'} />,
-        <SiElasticsearch key={6} className={'tech-icon'} />,
+        <SiCplusplus key="cpp" className="tech-icon" />,
+        <SiC key="c" className="tech-icon" />,
+        <SiFastapi key="fastapi" className="tech-icon" />,
+        <SiLaravel key="laravel" className="tech-icon" />,
+        <SiFlutter key="flutter" className="tech-icon" />,
       ],
     },
+
     {
       slideNumberImg: '/assets/portfolio/2.svg',
-      projectTitle: 'CX Sales',
-      projectDescription: `I have contributed to the biggest customer facing applications and services of Oracle CX. I prototyped, designed and helped my team to build a Zoom application integration for Oracle CX Sales (CRM Selling System) from scratch. Played a key role in the modernization and re-implementation of biggest Oracle's CRM - CX Sales.
-        `,
+      projectTitle: 'Regional Career Infrastructure',
+      projectDescription: `
+Friction: Standard job portals fail to handle the fragmented educational and professional data endemic to emerging regional markets.
+Logic: Architected a high-concurrency Laravel engine with strict RBAC and multi-tenant logic to unify youth employment pipelines.
+Leverage: Transformed a "job board" into a scalable regional infrastructure capable of matching talent to opportunity at scale.
+      `,
       slideHeight: '100vh',
-      projectImg: '/assets/portfolio/orcl/orclcloud.png',
-      projectMobileImg: '/assets/portfolio/orcl/cxcloud.webp',
-      liveLink: 'https://www.oracle.com/ca-en/cx/sales/',
+      projectImg: '/assets/portfolio/projects/job-portal.png',
+      projectMobileImg: '/assets/portfolio/projects/job-portal.png',
       projectTechnologies: [
+        'Laravel',
         'Javascript',
-        'JET',
-        'Web Components',
-        'Service Workers',
-        'Redux',
+        'MySQL',
+        'TailwindCSS',
       ],
-
       slideBgColor: '#010606',
+      liveLink: 'https://jobs.felixeladi.co.ke',
+      githubLink: 'https://github.com/Ela-El-maker/Job-Carrier-Portal',
       technologyIcons: [
-        <SiTypescript key={1} className={'tech-icon'} />,
-        <SiJavascript key={2} className={'tech-icon'} />,
-        <SiRedux key={4} className={'tech-icon'} />,
-        <SiMongodb key={5} className={'tech-icon'} />,
-        <SiElasticsearch key={6} className={'tech-icon'} />,
+        <SiLaravel key="laravel" className="tech-icon" />,
+        <SiMysql key="mysql" className="tech-icon" />,
+        <SiJavascript key="js" className="tech-icon" />,
+        <SiTailwindcss key="tailwind" className="tech-icon" />,
       ],
     },
+
     {
       slideNumberImg: '/assets/portfolio/3.svg',
-      projectTitle: 'Sneaker Maniacs',
-      projectDescription:
-        'Sneaker-maniacs is a custom e-commerce platform powered by Next.js, Redux and MongoDB. My main goal was to build a web app that employs the best latest practices and on mobile feels like a rich native application. Try it out!',
+      projectTitle: 'Up-Skill: Fintech-Enabled Learning',
+      projectDescription: `
+Friction: Access to premium learning tools is often blocked by payment friction and outdated software versions in local hubs.
+Logic: Built a Flutter client integrating M-Pesa APIs for instant liquidity and a GitHub-synced engine for mandatory updates.
+Leverage: Ensured 100% fleet compliance and simplified the friction of skill-acquisition payments for the local user-base.
+      `,
       slideHeight: '100vh',
-      projectImg: '/assets/portfolio/projectOne/SneakerManiacs.png',
-      projectMobileImg: '/assets/portfolio/projectOne/sneakerManiacsPhone.png',
-      githubLink: 'https://github.com/feloela/next-multibrand-store',
-      liveLink: 'https://sneaker-maniacs.vercel.app/',
+      projectImg: '/assets/portfolio/projects/pay.png',
+      projectMobileImg: '/assets/portfolio/projects/pay.png',
       projectTechnologies: [
-        'Next.js',
-        'React',
-        'Redux',
-        'Mongo DB',
-        'Styled Components',
+        'Flutter',
+        'M-Pesa Integration',
+        'PHP Backend',
+        'MySQL',
       ],
-
       slideBgColor: '#010606',
+      liveLink: undefined,
+      githubLink: 'https://github.com/Ela-El-maker/Up-Skill-System',
       technologyIcons: [
-        <SiTypescript key={1} className={'tech-icon'} />,
-        <SiReact key={2} className={'tech-icon'} />,
-        <SiNextdotjs key={3} className={'tech-icon'} />,
-        <SiRedux key={4} className={'tech-icon'} />,
-        <SiMongodb key={5} className={'tech-icon'} />,
-        <SiStorybook key={6} className={'tech-icon'} />,
+        <SiFlutter key="flutter" className="tech-icon" />,
+        <SiNodedotjs key="node" className="tech-icon" />,
+        <SiJavascript key="js" className="tech-icon" />,
+        <SiGooglecloud key="gcloud" className="tech-icon" />,
+
       ],
     },
+
     {
       slideNumberImg: '/assets/portfolio/4.svg',
-      projectTitle: 'Department of Optics | Web-portal',
-      projectDescription: `A sneak peak of a project that I'm currently building. This is a full-stack portal with 70+ pages designed and built for the department of Optics (Chernivtsi National University). It is powered by Next.js and Node.js on backend.`,
+      projectTitle: 'Enterprise SDLC Management System',
+      projectDescription: `
+Friction: Technical teams often struggle with process overhead, leading to "project drift" and lack of senior oversight.
+Logic: Implemented a Spatie-based management system on Laravel 11 to enforce strict role responsibilities from Developer to Admin.
+Leverage: Codified the Software Development Life Cycle into a tool that enforces discipline and measurable progress in large teams.
+      `,
       slideHeight: '100vh',
-      projectImg: '/assets/portfolio/projectTwo/vpsFullHd.png',
-      projectMobileImg: '/assets/portfolio/projectTwo/vpsMobile.png',
-      githubLink: 'https://github.com/feloela/next-multibrand-store',
-      liveLink: 'https://optics-vps.vercel.app/',
-      projectTechnologies: ['Next.js', 'React', 'Redux', 'Mongo DB', 'Express'],
-
-      slideBgColor: '#4831d4',
+      projectImg: '/assets/portfolio/projects/project-man.png',
+      projectMobileImg: '/assets/portfolio/projects/project-man.png',
+      projectTechnologies: [
+        'Laravel 11',
+        'Process Automation',
+        'PHP',
+        'MySQL',],
+      slideBgColor: '#010606',
+      liveLink: undefined,
+      githubLink: 'https://github.com/Ela-El-maker/Software_Project_Management_System',
       technologyIcons: [
-        <SiTypescript key={1} className={'tech-icon'} />,
-        <SiReact key={2} className={'tech-icon'} />,
-        <SiNextdotjs key={3} className={'tech-icon'} />,
-        <SiRedux key={4} className={'tech-icon'} />,
-        <SiNodedotjs key={5} className={'tech-icon'} />,
-        <SiMongodb key={6} className={'tech-icon'} />,
+        <SiLaravel key="laravel" className="tech-icon" />,
+        <SiMysql key="mysql" className="tech-icon" />,
+        <SiDocker key="docker" className="tech-icon" />,
+        <SiBootstrap key="bootstrap" className="tech-icon" />,
+      ],
+    },
+
+    {
+      slideNumberImg: '/assets/portfolio/055.svg',
+      projectTitle: 'Ela-OS: Systems Design Manifesto',
+      projectDescription: `
+Friction: Portfolios are typically static lists; they fail to demonstrate the "mechanical sympathy" of a true systems architect.
+Logic: Reimagined the browser as a desktop environment (OS), using Next.js/TypeScript to showcase complex state management.
+Leverage: A high-fidelity proof-of-concept that proves technical depth is most powerful when paired with intuitive design.
+      `,
+      slideHeight: '100vh',
+      projectImg: '/assets/portfolio/projects/portfolio.png',
+      projectMobileImg: '/assets/portfolio/projects/portfolio.png',
+      projectTechnologies: [
+        'Next.js',
+        'TypeScript',
+        'UI/UX Architecture',
+        'Redux Toolkit',
+
+      ],
+      slideBgColor: '#4831d4',
+      liveLink: 'https://ela-el-maker.github.io',
+      githubLink: 'https://github.com/Ela-El-maker/Ela-OS-Portfolio',
+      technologyIcons: [
+        <SiTypescript key="ts" className="tech-icon" />,
+        <SiNextdotjs key="next" className="tech-icon" />,
+        <SiReact key="react" className="tech-icon" />,
+        <SiMongodb key="mongo" className="tech-icon" />,
       ],
     },
   ];
-  return {
-    highlightedProjects,
-  };
+
+  return { highlightedProjects };
 };

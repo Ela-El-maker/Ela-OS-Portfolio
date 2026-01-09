@@ -1,13 +1,18 @@
-import { Story } from '@storybook/react';
-import TextCarousel, { Props } from './TextCarousel';
+import type { Meta, StoryObj } from '@storybook/react';
+import TextCarousel from './TextCarousel';
 import { projectDetailsQuotes } from '../ProjectDetailsSlide/ProjectDetailsSlide.config';
 
-export default {
+const meta: Meta<typeof TextCarousel> = {
   title: 'Portfolio/TextCarousel',
   component: TextCarousel,
 };
 
-const Template: Story<Props> = (args) => <TextCarousel {...args} />;
+export default meta;
 
-export const Primary = Template.bind({});
-Primary.args = { quotes: projectDetailsQuotes };
+type Story = StoryObj<typeof TextCarousel>;
+
+export const Default: Story = {
+  args: {
+    quotes: projectDetailsQuotes,
+  },
+};
