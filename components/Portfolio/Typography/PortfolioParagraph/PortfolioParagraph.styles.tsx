@@ -35,7 +35,7 @@ export const P = styled.p<ParagraphProps>`
 
   ${({ withAnimatedPresence }) => withAnimatedPresence && paragraphAnimation};
 
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     font-size: 1rem;
   }
 `;
