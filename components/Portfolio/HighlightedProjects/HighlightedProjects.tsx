@@ -25,6 +25,16 @@ const HighlightedProjects = (): JSX.Element => {
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        const manifestEntry = entries.find(
+          (entry) =>
+            entry.isIntersecting && entry.target.getAttribute('data-terminal-lock') === 'MANIFEST'
+        );
+
+        if (manifestEntry) {
+          setActiveTitle('MANIFEST');
+          return;
+        }
+
         const activeEntry = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -58,7 +68,11 @@ const HighlightedProjects = (): JSX.Element => {
       <Navbar isLogoExpanded={true} />
 
       {/* HERO SECTION: The Project Manifest */}
-      <Styled.ProjectsHero ref={heroRef} data-terminal-title="MANIFEST">
+      <Styled.ProjectsHero
+        ref={heroRef}
+        data-terminal-title="MANIFEST"
+        data-terminal-lock="MANIFEST"
+      >
         <Styled.HeroLeftColumn>
           <Styled.SystemTag>BOOT_SEQUENCE // Ela PORTFOLIO_V4.0.1</Styled.SystemTag>
           <SectionHeader
@@ -136,7 +150,11 @@ const HighlightedProjects = (): JSX.Element => {
 
       {/* FINAL DETAILS SLIDE AFTER ALL PROJECTS */}
       {lastProject && (
-        <Styled.SnapWrapper ref={detailsRef} data-terminal-title="MANIFEST">
+        <Styled.SnapWrapper
+          ref={detailsRef}
+          data-terminal-title="MANIFEST"
+          data-terminal-lock="MANIFEST"
+        >
           <WaveDivider waveImg={'/assets/portfolio/blob-1.svg'} dividerHeight={'150px'} />
           <ProjectDetailsSlide
             slideHeight={'calc(100% - 150px)'}
