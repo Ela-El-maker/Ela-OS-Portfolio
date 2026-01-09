@@ -27,6 +27,10 @@ export const CodeBackground = styled.div`
   padding: 2rem;
   animation: ${scrollCode} 40s linear infinite;
   mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.55rem;
+  }
 `;
 
 export const Container = styled.section<ContainerProps>`
@@ -38,6 +42,7 @@ export const Container = styled.section<ContainerProps>`
   scroll-snap-align: start;
   scroll-snap-stop: always;
   overflow: hidden;
+  padding: 0 0 2rem;
 
   /* Subtle vignette to focus on the center content */
   &::after {
@@ -50,6 +55,9 @@ export const Container = styled.section<ContainerProps>`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
+    height: auto;
+    min-height: auto;
+    padding: 2.5rem 0;
   }
 `;
 
@@ -72,6 +80,12 @@ export const LeftColumn = styled.div`
     color: #58c7f3;
     letter-spacing: 2px;
     z-index: 2;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(88, 199, 243, 0.1);
+    padding: 2rem 0;
   }
 `;
 
@@ -120,12 +134,17 @@ export const ImageWrapper = styled.div`
 
 export const IconWrapper = styled.ul`
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(88, 199, 243, 0.1);
-  /* Angle-cut corner for industrial feel */
   clip-path: polygon(0 0, 95% 0, 100% 30%, 100% 100%, 5% 100%, 0 70%);
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 1rem;
+    justify-content: center;
+  }
 `;
 
 export const Figure = styled.figure`
@@ -138,6 +157,11 @@ export const Figure = styled.figure`
   img {
     /* ... existing code ... */
     pointer-events: none; /* Prevents ghost images from interfering with hover */
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    height: auto;
+    justify-content: center;
   }
 `;
 
@@ -187,6 +211,7 @@ export const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
 
   h1 {
     text-align: center;
@@ -196,19 +221,22 @@ export const RightColumn = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    height: 40%;
-    padding: 1rem;
+    padding: 2rem 1.5rem;
     justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.25rem;
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      text-align: left;
     }
 
     p {
-      margin: 1rem 0;
+      margin: 0.5rem 0 0;
     }
   }
   @media ${({ theme }) => theme.media.phone} {
-    height: 55%;
+    padding: 1.5rem 1rem 0;
   }
 `;
 
@@ -242,9 +270,12 @@ export const ButtonsWrapper = styled.div`
   }
 
   @media ${({ theme }) => theme.media.phone} {
-    gap: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+
     a {
-      width: 50%;
+      width: 100%;
     }
   }
 `;
