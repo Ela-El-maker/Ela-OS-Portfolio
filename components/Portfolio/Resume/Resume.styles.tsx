@@ -11,38 +11,45 @@ export const Container = styled.section`
   padding: 5rem 1rem;
 
   @media ${({ theme }) => theme.media.tablet} {
-    padding: 0;
+    padding: 2rem 1rem;
   }
 `;
 
 export const ResumeWrapper = styled.div`
   background-color: ${({ theme }) => theme.portfolio.resumeColors.bgColor};
-  padding: 2rem;
-  max-width: 90%;
+  padding: 3rem;
+  max-width: 1100px;
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
-    padding: 0;
+    padding: 1.5rem;
+    gap: 2rem;
   }
 `;
 
 /**
- * LEFT COLUMN
+ * LEFT COLUMN (Sidebar)
  */
-
 export const LeftColumn = styled.aside`
-  width: 25%;
-  padding: 3rem 0;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 
   h3 {
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
   }
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
-    padding: 0;
   }
 `;
 
@@ -50,32 +57,51 @@ export const ContactInfo = styled.address`
   font-style: normal;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
 `;
 
 export const ContactLink = styled.a`
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 /**
- * RIGHT COLUMN
+ * RIGHT COLUMN (Main Content)
  */
-
 export const RightColumn = styled.section`
-  width: 75%;
+  width: 70%;
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
   }
 `;
-export const SummaryHeader = styled.header``;
+
+export const SummaryHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
 
 export const Name = styled.h1`
   font-size: 3.5rem;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
 
   span {
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
@@ -83,77 +109,164 @@ export const Name = styled.h1`
 
   @media ${({ theme }) => theme.media.tablet} {
     font-size: 2.5rem;
-    line-height: 1.4;
   }
 `;
+
 export const Title = styled.h2`
-  font-size: 2rem;
-  letter-spacing: -1px;
-  line-height: 1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0.5rem 0;
+  color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
 `;
 
-export const Summary = styled.summary`
+export const Summary = styled.div`
   margin: 1rem 0;
+
+  /* Tighten spacing for the "Systems Manifesto" header inside the summary */
+  h3 {
+    margin: 0.5rem 0 0.75rem 0;
+  }
 `;
 
 export const SocialLinksWrapper = styled.div`
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   margin-top: 1rem;
 
   @media ${({ theme }) => theme.media.tablet} {
-    gap: 0.25rem;
-    flex-direction: column;
+    gap: 1rem;
   }
 `;
+
 export const SocialMediaLink = styled.a`
   display: flex;
   align-items: center;
-  cursor: pointer;
-  color: #000;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  transition: transform 0.2s ease;
 
   .social-media-icon {
     color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
-    margin-right: 0.25rem;
-    font-size: 1.25rem;
+    margin-right: 0.4rem;
+    font-size: 1.1rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
   }
 `;
 
 export const ResumeHeader = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
-  margin: 1rem 0;
+  letter-spacing: 2px;
+  margin: 2.5rem 0 1rem 0;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  display: inline-block;
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
 `;
 
 export const EducationDetails = styled.div`
+  margin-bottom: 1.5rem;
+
   h4 {
     display: flex;
     justify-content: space-between;
-    color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+    margin: 0;
+    font-size: 1.1rem;
+    color: #222;
   }
 
   span {
     color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
-    font-weight: bold;
-  }
-`;
-
-export const Projects = styled.div`
-  a {
-    color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
-    font-weight: bold;
+    font-size: 0.9rem;
   }
 `;
 
 export const University = styled.p`
-  color: ${({ theme }) => theme.gray.dark};
-  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  font-weight: 600;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+`;
+
+export const Projects = styled.div`
+  background: #f9f9f9;
+  padding: 1rem;
+  border-left: 4px solid ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  font-size: 0.95rem;
+
+  a {
+    color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+    text-decoration: none;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const HR = styled.hr`
-  border-top: 3px solid
-    ${({ theme }) => theme.portfolio.resumeColors.accentColor};
-  border-bottom: 0;
-  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 0.75rem 0;
+`;
+
+export const Quote = styled.blockquote`
+  font-style: italic;
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
+  border-left: 3px solid ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+`;
+export const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  span {
+    background: #eee;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+  }
+`;
+export const ArchitectureList = styled.ul`
+  padding-left: 1.2rem;
+  margin-bottom: 2rem;
+
+  li {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+  }
+`;
+export const ImpactGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+`;
+
+export const ImpactItem = styled.div`
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 6px;
+
+  h4 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+  }
 `;
