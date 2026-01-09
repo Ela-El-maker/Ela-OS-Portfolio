@@ -12,6 +12,11 @@ export const Container = styled.section`
 
   @media ${({ theme }) => theme.media.tablet} {
     padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 1.5rem 0.75rem;
   }
 `;
 
@@ -28,6 +33,12 @@ export const ResumeWrapper = styled.div`
     flex-direction: column;
     padding: 1.5rem;
     gap: 2rem;
+  }
+
+   @media ${({ theme }) => theme.media.phone} {
+    padding: 1.25rem;
+    gap: 1.5rem;
+    box-shadow: none;
   }
 `;
 
@@ -51,6 +62,10 @@ export const LeftColumn = styled.aside`
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 2rem;
+  }
 `;
 
 export const ContactInfo = styled.address`
@@ -63,6 +78,10 @@ export const ContactInfo = styled.address`
   p {
     margin: 0;
     font-weight: 500;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.85rem;
   }
 `;
 
@@ -110,6 +129,11 @@ export const Name = styled.h1`
   @media ${({ theme }) => theme.media.tablet} {
     font-size: 2.5rem;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -118,6 +142,14 @@ export const Title = styled.h2`
   letter-spacing: 0.5px;
   margin: 0.5rem 0;
   color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: 1.1rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 1rem;
+  }
 `;
 
 export const Summary = styled.div`
@@ -126,6 +158,10 @@ export const Summary = styled.div`
   /* Tighten spacing for the "Systems Manifesto" header inside the summary */
   h3 {
     margin: 0.5rem 0 0.75rem 0;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    margin: 0.75rem 0;
   }
 `;
 
@@ -137,6 +173,12 @@ export const SocialLinksWrapper = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     gap: 1rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 `;
 
@@ -158,6 +200,14 @@ export const SocialMediaLink = styled.a`
   &:hover {
     transform: translateY(-2px);
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.9rem;
+
+    .social-media-icon {
+      font-size: 1rem;
+    }
+  }
 `;
 
 export const ResumeHeader = styled.h3`
@@ -169,6 +219,17 @@ export const ResumeHeader = styled.h3`
   border-bottom: 2px solid ${({ theme }) => theme.portfolio.resumeColors.accentColor};
   display: inline-block;
   color: ${({ theme }) => theme.portfolio.resumeColors.accentColor};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    margin: 2rem 0 0.75rem 0;
+    font-size: 1rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+  }
 `;
 
 export const EducationDetails = styled.div`
@@ -185,6 +246,14 @@ export const EducationDetails = styled.div`
   span {
     color: ${({ theme }) => theme.portfolio.resumeColors.lightText};
     font-size: 0.9rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    h4 {
+      font-size: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 `;
 
@@ -237,6 +306,15 @@ export const Tags = styled.div`
     font-size: 0.8rem;
     border-radius: 20px;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 0.4rem;
+
+    span {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.6rem;
+    }
+  }
 `;
 export const ArchitectureList = styled.ul`
   padding-left: 1.2rem;
@@ -252,6 +330,15 @@ export const ImpactGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-bottom: 2rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    gap: 1.25rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 export const ImpactItem = styled.div`
@@ -268,5 +355,17 @@ export const ImpactItem = styled.div`
   p {
     margin: 0.25rem 0 0;
     font-size: 0.9rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 0.85rem;
+
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
   }
 `;
