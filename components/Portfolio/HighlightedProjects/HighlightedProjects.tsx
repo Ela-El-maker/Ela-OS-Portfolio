@@ -20,6 +20,7 @@ const HighlightedProjects = (): JSX.Element => {
   const [activeTitle, setActiveTitle] = React.useState('MANIFEST');
   const heroRef = React.useRef<HTMLDivElement | null>(null);
   const slideRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const detailsRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,6 +45,10 @@ const HighlightedProjects = (): JSX.Element => {
     slideRefs.current.forEach((node) => {
       if (node) observer.observe(node);
     });
+
+    if (detailsRef.current) {
+      observer.observe(detailsRef.current);
+    }
 
     return () => observer.disconnect();
   }, [highlightedProjects.length]);
@@ -131,7 +136,7 @@ const HighlightedProjects = (): JSX.Element => {
 
       {/* FINAL DETAILS SLIDE AFTER ALL PROJECTS */}
       {lastProject && (
-        <Styled.SnapWrapper>
+        <Styled.SnapWrapper ref={detailsRef} data-terminal-title="MANIFEST">
           <WaveDivider waveImg={'/assets/portfolio/blob-1.svg'} dividerHeight={'150px'} />
           <ProjectDetailsSlide
             slideHeight={'calc(100% - 150px)'}
