@@ -87,15 +87,15 @@ export const InteractiveModule = styled.section`
     & > div {
       transform: scale(1.02);
     }
-  }
+  @media ${({ theme }) => theme.media.phone} {
+    h3 {
+      font-size: 1.6rem;
+    }
 
-  @media ${({ theme }) => theme.media.tablet} {
-    flex: 1;
-    border-left: none;
-    border-bottom: 1px solid rgba(88, 199, 243, 0.1);
-    padding: 3rem 0;
+    p {
+      font-size: 0.9rem;
+    }
   }
-
   @media ${({ theme }) => theme.media.phone} {
     padding: 2.5rem 0;
   }
@@ -119,7 +119,7 @@ export const ModuleContent = styled.div`
     width: 85%;
     padding: 3rem 0;
     text-align: center;
-  }
+
     p {
       text-align: left;
       margin-left: auto;
@@ -131,17 +131,18 @@ export const ModuleContent = styled.div`
       margin-left: auto;
       margin-right: auto;
     }
-`;
-
-@media ${ ({ theme }) => theme.media.phone } {
-    h3 {
-    font - size: 1.6rem;
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    h3 {
+      font-size: 1.6rem;
+    }
 
     p {
-    font - size: 0.9rem;
+      font-size: 0.9rem;
+    }
   }
-}
+`;
 
 export const SystemTag = styled.div`
   font-family: 'JetBrains Mono', monospace;
