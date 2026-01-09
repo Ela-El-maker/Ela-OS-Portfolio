@@ -33,7 +33,7 @@ const HighlightedProjects = (): JSX.Element => {
             margin={'0'}
             color={'#fff'}
           />
-          <div style={{ borderLeft: '2px solid #2bff88', paddingLeft: '2rem' }}>
+          <Styled.HeroParagraphWrapper>
             <PortfolioParagraph
               margin={'2rem 0'}
               paragraphText={`High-integrity system architectures and frontend deployments. Technical documentation and source code available via integrated terminal links below.`}
@@ -41,7 +41,7 @@ const HighlightedProjects = (): JSX.Element => {
               variant={'large'}
               withAnimatedPresence
             />
-          </div>
+          </Styled.HeroParagraphWrapper>
         </Styled.HeroLeftColumn>
 
         <Styled.HeroRightColumn>
@@ -81,20 +81,10 @@ const HighlightedProjects = (): JSX.Element => {
       {highlightedProjects.map((project, index) => (
         <React.Fragment key={project.projectTitle}>
           {/* Metadata Ribbon above each slide */}
-          <div style={{
-            background: '#0a0c10',
-            padding: '5px 20px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            borderTop: '1px solid #1a1d23'
-          }}>
-            <span style={{ fontFamily: 'JetBrains Mono', fontSize: '10px', color: '#58c7f3' }}>
-              DEPLOY_ID: {index + 1}00-ALPHA
-            </span>
-            <span style={{ fontFamily: 'JetBrains Mono', fontSize: '10px', color: '#2bff88' }}>
-              STATUS: OPERATIONAL // V.2026.04
-            </span>
-          </div>
+          <Styled.MetadataRibbon>
+            <span>DEPLOY_ID: {index + 1}00-ALPHA</span>
+            <span>STATUS: OPERATIONAL // V.2026.04</span>
+          </Styled.MetadataRibbon>
 
           {/* Wrap each project slide to handle hover for floating terminal */}
           <div
@@ -122,9 +112,9 @@ const HighlightedProjects = (): JSX.Element => {
       )}
 
       {/* Fixed Terminal UI */}
-      <div style={{ position: 'fixed', bottom: '40px', left: '40px', zIndex: 100 }}>
+      <Styled.SystemLogWrapper>
         <SystemLog text={activeTitle} />
-      </div>
+      </Styled.SystemLogWrapper>
     </Styled.Container>
   );
 };

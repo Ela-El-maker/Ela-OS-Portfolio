@@ -21,12 +21,12 @@ const dataFlow = keyframes`
 
 export const Container = styled.section`
   background-color: #020408;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   position: relative;
+  scroll-snap-type: none;
 
   /* THE PERSISTENT GRID SYSTEM */
   background-image: 
@@ -73,14 +73,19 @@ export const Container = styled.section`
     pointer-events: none;
     z-index: 99;
   }
+  @media ${({ theme }) => theme.media.desktop} {
+    scroll-snap-type: y mandatory;
+  }
 `;
 
 export const ProjectsHero = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   position: relative;
   scroll-snap-align: center;
   overflow: hidden;
+  padding: 4rem 5%;
+  gap: 3rem;
 
   /* Corner Diagnostic Brackets */
   &::before, &::after {
@@ -93,6 +98,17 @@ export const ProjectsHero = styled.div`
   }
   &::before { top: 40px; left: 40px; border-right: 0; border-bottom: 0; }
   &::after { bottom: 40px; right: 40px; border-left: 0; border-top: 0; }
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    min-height: auto;
+    padding: 3rem 1.5rem 4rem;
+    gap: 2.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 2.5rem 1rem 3rem;
+    gap: 2rem;
+  }
 `;
 
 export const SystemTag = styled.div`
@@ -114,6 +130,10 @@ export const SystemTag = styled.div`
     margin-right: 10px;
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 70% 100%, 0% 100%);
   }
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+  }
 `;
 
 export const HeroLeftColumn = styled.div`
@@ -133,6 +153,21 @@ export const HeroLeftColumn = styled.div`
     color: #fff;
     text-shadow: 0 0 20px rgba(88, 199, 243, 0.3);
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex: 1;
+    padding: 0;
+    text-align: center;
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 3.75rem);
+      margin-top: 1rem;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    align-items: center;
+  }
 `;
 
 export const HeroRightColumn = styled.div`
@@ -151,6 +186,11 @@ export const HeroRightColumn = styled.div`
     background: linear-gradient(to bottom, transparent, rgba(88, 199, 243, 0.1), transparent);
     animation: ${scanline} 4s linear infinite;
     pointer-events: none;
+  }
+  @media ${({ theme }) => theme.media.tablet} {
+    flex: unset;
+    width: 100%;
+    min-height: 320px;
   }
 `;
 
@@ -179,6 +219,10 @@ export const SnapWrapper = styled.section`
   display: flex;
   flex-direction: column;
   border-top: 1px solid rgba(88, 199, 243, 0.1);
+  @media ${({ theme }) => theme.media.tablet} {
+    height: auto;
+    min-height: 100vh;
+  }
 `;
 
 const cubeRotate = keyframes`
@@ -193,24 +237,24 @@ const pulseGlow = keyframes`
 
 export const HolographicCore = styled.div`
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: clamp(260px, 40vw, 420px);
+  height: clamp(260px, 40vw, 420px);
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const Cube = styled.div`
-  width: 200px;
-  height: 200px;
+  width: clamp(140px, 20vw, 220px);
+  height: clamp(140px, 20vw, 220px);
   position: relative;
   transform-style: preserve-3d;
   animation: ${cubeRotate} 20s linear infinite;
 
   div {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     border: 1px solid #2bff88;
     background: rgba(43, 255, 136, 0.05);
     box-shadow: 0 0 15px rgba(43, 255, 136, 0.2);
@@ -233,4 +277,68 @@ export const RadarCircle = styled.div<{ size: string; delay: string }>`
   border-radius: 50%;
   animation: ${pulseGlow} 4s ease-in-out infinite;
   animation-delay: ${({ delay }) => delay};
+
+  @media ${({ theme }) => theme.media.phone} {
+    width: calc(${({ size }) => size} * 0.7);
+    height: calc(${({ size }) => size} * 0.7);
+  }
+`;
+
+export const HeroParagraphWrapper = styled.div`
+  border-left: 2px solid #2bff88;
+  padding-left: 2rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    border-left: none;
+    border-top: 1px solid rgba(43, 255, 136, 0.3);
+    padding: 1.5rem 0 0;
+  }
+`;
+
+export const MetadataRibbon = styled.div`
+  background: #0a0c10;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #1a1d23;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: #58c7f3;
+  letter-spacing: 1px;
+
+  span:last-child {
+    color: #2bff88;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.6rem;
+  }
+`;
+
+export const SystemLogWrapper = styled.div`
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 100;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    bottom: 20px;
+    left: 20px;
+    transform: scale(0.95);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    position: static;
+    margin: 2rem auto 3rem;
+    transform: none;
+    display: flex;
+    justify-content: center;
+  }
 `;
