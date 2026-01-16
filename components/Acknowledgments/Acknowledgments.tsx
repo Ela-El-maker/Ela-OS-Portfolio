@@ -2,48 +2,49 @@ import React from 'react';
 import * as Styled from './Acknowledgments.styles';
 import Paragraph from '../Typography/Paragraph/Paragraph';
 import { authors } from './Acknowledgments.config';
-import { FiGithub } from 'react-icons/fi';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import WithSparkles from '../Portfolio/WithSparkles/WithSparkles';
 
-/**
- *Renders Acknowledgments component with the list of people that heavily inspired this project
- *@function Acknowledgments
- *@returns {JSX.Element} - Rendered Acknowledgments component
- */
 const Acknowledgments = (): JSX.Element => {
   return (
     <Styled.Container>
-      <Paragraph margin={'1rem 0'}>
-        I would like to express my special thanks of gratitude to the people
-        whose projects played a crucial role in the construction of this
-        project. They have been a catalyst for creative progress and heavily
-        inspired design choices that have been made.
-      </Paragraph>
+      <Styled.HeaderSection>
+        <Styled.TerminalTitle>SYSTEM_CONTRIBUTORS.log</Styled.TerminalTitle>
+        <Paragraph margin={'1.5rem 0'}>
+          This project is a reflection of my passion for technology and my journey through life as Felo. My deepest gratitude goes to the people and communities whose work and contributions have shaped not only this project, but my growth, mindset, and love for building on the web. Their influence extends far beyond code — it lives in who I am and who I continue to become. Thank you.
+        </Paragraph>
+      </Styled.HeaderSection>
 
-      <Paragraph margin={'1rem 0'}>
-        Without any order of preference, I would love to give thanks to:
-      </Paragraph>
+      <Styled.Grid>
+        {authors.map((author, index) => (
+          <Styled.AuthorCard key={author.id}>
+            <Styled.CardDecor>
+              <span className="index">0{index + 1}</span>
+              <div className="line" />
+            </Styled.CardDecor>
+            
+            <Styled.AuthorName>
+              <WithSparkles color={'#00f2ff'}>{author.name}</WithSparkles>
+            </Styled.AuthorName>
 
-      <Styled.UL>
-        {authors.map((author) => (
-          <Styled.LI key={author.id}>
-            <Styled.AuthorCard>
-              <Styled.AuthorContacts>
-                <Styled.A href={author.url} target="_blank" rel="noopener">
-                  <WithSparkles color={'yellow'}>{author.name}</WithSparkles>
-                </Styled.A>
+            <Styled.AcknowledgementText>
+              {author.acknowledgement}
+            </Styled.AcknowledgementText>
 
-                {author.github && (
-                  <Styled.A href={author.github} target="_blank" rel="noopener">
-                    <FiGithub className={'github__icon'} />
-                  </Styled.A>
-                )}
-              </Styled.AuthorContacts>
-              <Paragraph margin={'1rem 0'}>{author.acknowledgement}</Paragraph>
-            </Styled.AuthorCard>
-          </Styled.LI>
+            <Styled.ActionArea>
+              <Styled.IconLink href={author.url} target="_blank" rel="noopener" title="Portfolio">
+                <FiExternalLink />
+              </Styled.IconLink>
+              
+              {author.github && (
+                <Styled.IconLink href={author.github} target="_blank" rel="noopener" title="GitHub">
+                  <FiGithub />
+                </Styled.IconLink>
+              )}
+            </Styled.ActionArea>
+          </Styled.AuthorCard>
         ))}
-      </Styled.UL>
+      </Styled.Grid>
     </Styled.Container>
   );
 };

@@ -1,43 +1,99 @@
 export const authors: IAuthor[] = [
   {
     id: 1,
-    name: '🏆 Piyush Suthar',
-    url: 'https://piyushsuthar.github.io/',
-    github: 'https://github.com/PiyushSuthar',
+    name: '🏆 Next.js Team',
+    url: 'https://nextjs.org/',
+    github: 'https://github.com/vercel/next.js',
     acknowledgement:
-      'and his great 🚀 Windows 11 Web project 🚀 that inspired me to build this app. Thanks!',
+      'for the incredible React framework that powers this portfolio with SSR, SSG, and amazing developer experience.',
   },
   {
     id: 2,
-    name: '🏆 Olaolu Olawuyi',
-    url: 'https://olaolu.dev/',
-    github: 'https://github.com/whizkydee',
+    name: '🏆 React Team',
+    url: 'https://reactjs.org/',
+    github: 'https://github.com/facebook/react',
     acknowledgement:
-      'and his ✨ beautiful portfolio and invaluable contribution ✨ to the open source community. Thanks!',
+      'for the revolutionary JavaScript library that makes building interactive UIs a joy.',
   },
   {
     id: 3,
-    name: '🏆 Josh Comeau',
-    url: 'https://www.joshwcomeau.com/',
-    github: 'https://github.com/joshwcomeau',
+    name: '🏆 Styled Components',
+    url: 'https://styled-components.com/',
+    github: 'https://github.com/styled-components/styled-components',
     acknowledgement:
-      'and his 🎉 monumental contribution 🎉 to the education of the community. Thanks!',
+      'for the CSS-in-JS solution that enables beautiful, maintainable styling with theme support.',
   },
   {
     id: 4,
-    name: '🏆 Dejan Markovic',
-    url: 'https://www.dejan.works/',
-    github: null,
+    name: '🏆 Redux & React Redux',
+    url: 'https://redux.js.org/',
+    github: 'https://github.com/reduxjs/redux',
     acknowledgement:
-      'and his 🎨 unique approach 🎨 to design and stunning portfolio of course. Thanks!',
+      'for predictable state management that keeps the desktop OS simulation running smoothly.',
   },
   {
     id: 5,
-    name: '🏆 Next.js and React Teams',
-    url: 'https://nextjs.org/',
-    github: 'https://github.com/vercel/next.js/',
+    name: '🏆 Framer Motion',
+    url: 'https://www.framer.com/motion/',
+    github: 'https://github.com/framer/motion',
     acknowledgement:
-      'for providing mind-blowing open-source solutions to us and helping us to build a better future for the Web. Thanks!',
+      'for the production-ready motion library that brings the animations and interactions to life.',
+  },
+  {
+    id: 6,
+    name: '🏆 React Icons',
+    url: 'https://react-icons.github.io/react-icons/',
+    github: 'https://github.com/react-icons/react-icons',
+    acknowledgement:
+      'for the comprehensive icon library that provides beautiful icons throughout the interface.',
+  },
+  {
+    id: 7,
+    name: '🏆 React RND',
+    url: 'https://github.com/bokuweb/react-rnd',
+    github: 'https://github.com/bokuweb/react-rnd',
+    acknowledgement:
+      'for the draggable and resizable components that make the windows truly interactive.',
+  },
+  {
+    id: 8,
+    name: '🏆 Terminal in React',
+    url: 'https://github.com/nitin42/terminal-in-react',
+    github: 'https://github.com/nitin42/terminal-in-react',
+    acknowledgement:
+      'for the terminal emulator component that adds a unique touch to the desktop experience.',
+  },
+  {
+    id: 9,
+    name: '🏆 Formik & Yup',
+    url: 'https://formik.org/',
+    github: 'https://github.com/jaredpalmer/formik',
+    acknowledgement:
+      'for the form management and validation libraries that handle user input seamlessly.',
+  },
+  {
+    id: 10,
+    name: '🏆 Mongoose & MongoDB',
+    url: 'https://mongoosejs.com/',
+    github: 'https://github.com/Automattic/mongoose',
+    acknowledgement:
+      'for the elegant MongoDB object modeling that powers the backend data persistence.',
+  },
+  {
+    id: 11,
+    name: '🏆 CodeCrafters',
+    url: 'https://codecrafters.io/',
+    github: 'https://github.com/codecrafters-io',
+    acknowledgement:
+      'for the incredible coding challenges that helped sharpen programming skills and deepen understanding of complex systems.',
+  },
+  {
+    id: 12,
+    name: '🏆 Open Source Community',
+    url: 'https://opensource.org/',
+    github: null,
+    acknowledgement:
+      'for the countless contributors who build and maintain the tools that make modern web development possible.',
   },
 ];
 
