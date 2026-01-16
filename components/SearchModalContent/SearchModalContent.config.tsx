@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import { FiCloud, FiInfo } from 'react-icons/fi';
 import { SiNextdotjs, SiReact } from 'react-icons/si';
-import Figma from '../Apps/Figma/Figma';
 import GoogleSearch from '../Apps/GoogleSearch/GoogleSearch';
 import Terminal from '../Apps/Terminal/Terminal';
 import VsCode from '../Apps/VsCode/VsCode';
+import MusicPlayer from '@components/Apps/Music/MusicPlayer';
 
 /**
  * Custom hook to get search modal data, namely top apps and quick searches
@@ -44,11 +44,11 @@ export const useSearchModalConfig = (): {
 
     {
       id: 4,
-      text: 'Figma',
-      icon: '/assets/icons/startmenu/figma.png',
+      text: 'Music Player',
+      icon: '/assets/icons/startmenu/music-player.svg',
       action: null,
       iconSize: { height: 38, width: 38 },
-      willOpenWindowWith: <Figma />,
+      willOpenWindowWith: <MusicPlayer />,
     },
 
     {

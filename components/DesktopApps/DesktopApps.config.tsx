@@ -1,6 +1,5 @@
 import React from 'react';
 import { IDesktopApp } from '../../types/ui/desktop-app';
-import Figma from '../Apps/Figma/Figma';
 import VsCode from '../Apps/VsCode/VsCode';
 import Likes from '../Likes/Likes';
 import Resume from '../Portfolio/Resume/Resume';
@@ -12,6 +11,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Acknowledgments from '../Acknowledgments/Acknowledgments';
 import CommentsList from '../CommentsList/CommentsList';
 import Terminal from '../Apps/Terminal/Terminal';
+import MusicPlayer from '@components/Apps/Music/MusicPlayer';
 
 /**
  * Custom hook used to get initial configuration for desktop
@@ -35,10 +35,10 @@ export const useDesktopApps = (): {
   const initialDesktopAppsList: IDesktopApp[] = [
     {
       id: 1,
-      text: 'Figma',
-      willOpenWindowWith: <Figma />,
+      text: 'Music Player',
+      willOpenWindowWith: <MusicPlayer />,
       variant: 'desktop',
-      iconSrc: '/assets/icons/startmenu/figma.png',
+      iconSrc: '/assets/icons/startmenu/music-player.svg',
       iconSize: { width: 40, height: 40 },
       action: null,
     },

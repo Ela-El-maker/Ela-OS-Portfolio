@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import VsCode from '../Apps/VsCode/VsCode';
 import GoogleSearch from '../Apps/GoogleSearch/GoogleSearch';
-import Figma from '../Apps/Figma/Figma';
+import MusicPlayer from '@components/Apps/Music/MusicPlayer';
 
 export const usePinnedAppsConfig = (): { pinnedApps: IPinnedApp[] } => {
   const pinnedApps: IPinnedApp[] = [
@@ -79,11 +79,11 @@ export const usePinnedAppsConfig = (): { pinnedApps: IPinnedApp[] } => {
     },
     {
       id: 10,
-      text: 'Figma',
-      icon: '/assets/icons/startmenu/figma.png',
+      text: 'Music Player',
+      icon: '/assets/icons/startmenu/music-player.svg',
       action: null,
       iconSize: { height: 38, width: 38 },
-      willOpenWindowWith: <Figma />,
+      willOpenWindowWith: <MusicPlayer />,
     },
     {
       id: 11,
