@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.primary.background};
   }
 
+  
   html,
   body {
     height: 100%;
