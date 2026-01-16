@@ -166,11 +166,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Website**: [feloela.com](https://www.feloela.com/)
-- **Email**: hello@feloela.com
-- **GitHub**: [@feloela](https://github.com/feloela)
-- **LinkedIn**: [Felo Ela](https://www.linkedin.com/in/feloela/)
+- **Website**: [feloela](https://www.portfolio.felixeladi.co.ke)
+- **GitHub**: [@Ela-El-maker](https://github.com/Ela-El-maker)
+- **LinkedIn**: [Felo Ela](https://www.linkedin.com/in/felixeladi/)
 
 ---
 
-Made with ❤️ by Felo Ela
+Made with ❤️ by Ela-El-maker

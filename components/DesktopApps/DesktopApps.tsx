@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo } from 'react';
 import * as Styled from './DesktopApps.styles';
 import { useDesktopApps } from './DesktopApps.config';
 import DesktopButton from '../DesktopButton/DesktopButton';
@@ -40,4 +40,4 @@ const DesktopApps = (): JSX.Element => {
   );
 };
 
-export default DesktopApps;
+export default memo(DesktopApps);

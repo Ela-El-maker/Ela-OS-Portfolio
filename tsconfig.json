@@ -12,8 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true, // Next.js handles transpiling
     "esModuleInterop": true,
-    "module": "NodeNext", // ESM support for Node + Next.js
-    "moduleResolution": "nodenext",
+    "module": "esnext", // ESM support for Node + Next.js
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true, // Required for Next.js + Babel
     "jsx": "preserve", // Modern React JSX transform

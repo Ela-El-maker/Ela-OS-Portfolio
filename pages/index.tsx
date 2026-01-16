@@ -1,7 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import React, { useEffect, useState } from 'react';
-import Desktop from '../components/Desktop/Desktop';
-import DesktopLayout from '../components/DesktopLayout/DesktopLayout';
+import dynamic from 'next/dynamic';
 import { wrapper } from '../store';
 import { loadLatestNews } from '../store/action-creators/news-action-creators';
 import { connect } from 'react-redux';
@@ -10,8 +9,11 @@ import Loader from '../components/Loader/Loader';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useMediaQuery } from '@react-hook/media-query';
-import PortfolioLanding from '../components/Portfolio/PortfolioLanding/PortfolioLanding';
-import PortfolioLayout from '../components/Portfolio/PortfolioLayout/PortfolioLayout';
+
+const Desktop = dynamic(() => import('../components/Desktop/Desktop'), { ssr: false });
+const DesktopLayout = dynamic(() => import('../components/DesktopLayout/DesktopLayout'), { ssr: false });
+const PortfolioLayout = dynamic(() => import('../components/Portfolio/PortfolioLayout/PortfolioLayout'), { ssr: false });
+const PortfolioLanding = dynamic(() => import('../components/Portfolio/PortfolioLanding/PortfolioLanding'), { ssr: false });
 
 interface ServerProps {
   title: string;
@@ -31,7 +33,7 @@ const Home: NextPage<ServerProps> = ({ title }) => {
   const { shouldIntroBeShown } = useTypedSelector((state) => state.ui);
   const [isLoading, setIsLoading] = useState(shouldIntroBeShown);
   const { notShowIntroAgain } = useActions();
-  const LOADING_INTRO_DURATION = 6000;
+  const LOADING_INTRO_DURATION = 2000;
 
   useEffect(() => {
     const timer = setTimeout(() => {
