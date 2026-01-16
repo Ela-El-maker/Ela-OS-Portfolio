@@ -10,7 +10,7 @@ export interface SliderProps {
   | 'searchModal'
   | 'calendarModal';
   width: string;
-  position: { top?: string; bottom?: string; right?: string; left?: string };
+  $position: { top?: string; bottom?: string; right?: string; left?: string };
   children?: ReactNode;
 }
 
@@ -22,7 +22,7 @@ export interface SliderProps {
 const SlidingModal: FC<SliderProps> = ({
   variant,
   width,
-  position,
+  $position,
   children,
 }): JSX.Element => {
   const {
@@ -37,7 +37,7 @@ const SlidingModal: FC<SliderProps> = ({
     <Styled.Container
       variant={variant}
       width={width}
-      position={position}
+      $position={$position}
       isSlidingModalOpen={isWidgetOpen}
       isAppCenterOpen={isAppCenterOpen}
       areSettingsOpen={areSettingsOpen}

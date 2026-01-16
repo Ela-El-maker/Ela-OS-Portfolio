@@ -56,18 +56,16 @@ const Loader = ({ isOnScreen, loadingDuration }: Props): JSX.Element => {
     BOOT_LOGS.slice(Math.max(0, statusIndex - 3), statusIndex + 1), 
   [statusIndex]);
 
-  return (
-    <Styled.Overlay isOnScreen={isOnScreen} loadingDuration={loadingDuration}>
+return (
+    <Styled.Overlay $isOnScreen={isOnScreen} $loadingDuration={loadingDuration}>
       <Styled.Scanline />
       
       <Styled.TerminalContainer>
-        {/* Top Header */}
         <Styled.Header>
           <div className="title">SYSTEM_BOOT_SEQUENCE_V.2.0.4</div>
           <div className="percent">{percent}%</div>
         </Styled.Header>
 
-        {/* Rolling Logs */}
         <Styled.LogArea>
           {visibleLogs.map((log, i) => (
             <div key={i} className="log-line">{log}</div>
@@ -75,13 +73,11 @@ const Loader = ({ isOnScreen, loadingDuration }: Props): JSX.Element => {
           <Styled.Cursor />
         </Styled.LogArea>
 
-        {/* Central Visualizer */}
         <Styled.VisualizerArea>
           <Styled.HexGrid />
           <Styled.PulseCircle />
         </Styled.VisualizerArea>
 
-        {/* Hardware Footer */}
         <Styled.StatsGrid>
           <div className="stat">
             <span className="label">CPU</span>
@@ -97,19 +93,19 @@ const Loader = ({ isOnScreen, loadingDuration }: Props): JSX.Element => {
           </div>
         </Styled.StatsGrid>
 
-        {/* Modern Segmented Progress */}
         <Styled.ProgressWrapper>
           {[...Array(40)].map((_, i) => (
             <Styled.BarSegment 
               key={i} 
-              active={i / 40 < percent / 100} 
+              $active={i / 40 < percent / 100} 
             />
           ))}
         </Styled.ProgressWrapper>
       </Styled.TerminalContainer>
 
-      <Styled.CornerDecor position="top-left" />
-      <Styled.CornerDecor position="bottom-right" />
+      {/* Correct placement of corner decorations */}
+      <Styled.CornerDecor $position="top-left" />
+      <Styled.CornerDecor $position="bottom-right" />
     </Styled.Overlay>
   );
 };

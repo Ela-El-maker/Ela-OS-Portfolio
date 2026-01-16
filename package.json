@@ -34,6 +34,7 @@
     "next-redux-wrapper": "^8.1.0",
     "react": "^19.0.0",
     "react-calendar": "^6.0.0",
+    "react-console-emulator": "^5.0.2",
     "react-dom": "^19.0.0",
     "react-icons": "^5.0.0",
     "react-is": "^19.0.0",
@@ -43,7 +44,7 @@
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "styled-components": "^6.1.1",
-    "terminal-in-react": "^3.5.2",
+    "terminal-in-react": "^4.3.1",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -57,9 +58,9 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/styled-components": "^5.1.34",
-    "husky": "^9.1.7",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.1.0",
+    "husky": "^9.1.7",
     "storybook": "8.6.15",
     "typescript": "^5.7.0"
   }

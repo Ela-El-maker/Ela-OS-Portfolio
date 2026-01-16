@@ -1,10 +1,15 @@
 import styled, { keyframes, css } from 'styled-components';
 
+// const flicker = keyframes`
+//   0% { opacity: 0.8; }
+//   5% { opacity: 0.9; }
+//   10% { opacity: 0.8; }
+//   100% { opacity: 1; }
+// `;
 const flicker = keyframes`
-  0% { opacity: 0.8; }
-  5% { opacity: 0.9; }
-  10% { opacity: 0.8; }
-  100% { opacity: 1; }
+  0%, 100% { opacity: 1; }
+  5% { opacity: 0.8; }
+  10% { opacity: 0.9; }
 `;
 
 const scanline = keyframes`
@@ -12,11 +17,13 @@ const scanline = keyframes`
   100% { transform: translateY(100%); }
 `;
 
+
+
 const blink = keyframes`
   50% { opacity: 0; }
 `;
 
-export const Overlay = styled.div<{ isOnScreen: boolean; loadingDuration: number }>`
+export const Overlay = styled.div<{ $isOnScreen: boolean; $loadingDuration: number }>`
   position: fixed;
   inset: 0;
   background: #05070a;
@@ -29,21 +36,18 @@ export const Overlay = styled.div<{ isOnScreen: boolean; loadingDuration: number
   overflow: hidden;
   transition: opacity 0.8s ease;
   
-  ${({ isOnScreen }) => !isOnScreen && css`
-    opacity: 0;
-    pointer-events: none;
+  ${({ $isOnScreen, $loadingDuration }) => !$isOnScreen && css`
+    animation: ${fadeOut} 0.5s forwards;
+    animation-delay: ${$loadingDuration}ms;
   `}
 `;
+
+
 
 export const Scanline = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 242, 255, 0.05) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 242, 255, 0.05) 50%, transparent 100%);
   height: 100px;
   width: 100%;
   z-index: 10;
@@ -132,24 +136,12 @@ export const ProgressWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const BarSegment = styled.div<{ active: boolean }>`
+export const BarSegment = styled.div<{ $active: boolean }>`
   flex: 1;
   height: 6px;
-  background: ${({ active }) => active ? '#00f2ff' : 'rgba(0, 242, 255, 0.1)'};
-  box-shadow: ${({ active }) => active ? '0 0 8px #00f2ff' : 'none'};
+  background: ${({ $active }) => $active ? '#00f2ff' : 'rgba(0, 242, 255, 0.1)'};
+  box-shadow: ${({ $active }) => $active ? '0 0 8px #00f2ff' : 'none'};
   transition: background 0.1s ease;
-`;
-
-export const CornerDecor = styled.div<{ position: 'top-left' | 'bottom-right' }>`
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 2px solid #00f2ff;
-  ${({ position }) => position === 'top-left' ? css`
-    top: 20px; left: 20px; border-right: none; border-bottom: none;
-  ` : css`
-    bottom: 20px; right: 20px; border-left: none; border-top: none;
-  `}
 `;
 
 export const HexGrid = styled.div`
@@ -158,4 +150,27 @@ export const HexGrid = styled.div`
   opacity: 0.1;
   background-image: radial-gradient(#00f2ff 0.5px, transparent 0.5px);
   background-size: 10px 10px;
+`;
+
+
+
+
+const fadeOut = keyframes`
+  to { opacity: 0; visibility: hidden; }
+`;
+
+
+
+
+
+export const CornerDecor = styled.div<{ $position: 'top-left' | 'bottom-right' }>`
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #00f2ff;
+  ${({ $position }) => $position === 'top-left' ? css`
+    top: 20px; left: 20px; border-right: none; border-bottom: none;
+  ` : css`
+    bottom: 20px; right: 20px; border-left: none; border-top: none;
+  `}
 `;

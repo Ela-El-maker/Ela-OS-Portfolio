@@ -48,7 +48,7 @@ const SystemTray = (): JSX.Element => {
       <SlidingModal
         variant={'systemTrayModal'}
         width={'600px'}
-        position={{
+        $position={{
           bottom: `${BOTTOM_OFFSET}px`,
           right: `${rightCoordinate - RIGHT_OFFSET}px`,
         }}
@@ -58,7 +58,7 @@ const SystemTray = (): JSX.Element => {
       <SlidingModal
         variant={'searchModal'}
         width={'600px'}
-        position={{
+        $position={{
           bottom: `${BOTTOM_OFFSET}px`,
           right: `${rightCoordinate - RIGHT_OFFSET}px`,
         }}

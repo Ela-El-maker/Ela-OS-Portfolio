@@ -16,7 +16,7 @@ const DesktopWidgets = (): JSX.Element => {
       <SlidingModal
         width={'700px'}
         variant={'widgetsModal'}
-        position={{ top: '1rem', bottom: '0', left: '0', right: '0' }}
+        $position={{ top: '1rem', bottom: '0', left: '0', right: '0' }}
       >
         <WidgetsModalContent />
       </SlidingModal>
@@ -24,7 +24,7 @@ const DesktopWidgets = (): JSX.Element => {
       <SlidingModal
         variant={'settingsModal'}
         width={'360px'}
-        position={{ bottom: '0', right: `0`, top: '1rem' }}
+        $position={{ bottom: '0', right: `0`, top: '1rem' }}
       >
         <SettingsModalContent />
       </SlidingModal>
@@ -32,7 +32,7 @@ const DesktopWidgets = (): JSX.Element => {
       <SlidingModal
         variant={'calendarModal'}
         width={'350px'}
-        position={{ bottom: '0', right: '1rem' }}
+        $position={{ bottom: '0', right: '1rem' }}
       >
         <CalendarWidget />
       </SlidingModal>

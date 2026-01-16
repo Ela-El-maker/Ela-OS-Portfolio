@@ -51,10 +51,10 @@ const calendarModalStyles = css<ContainerProps>`
 export const Container = styled.div<ContainerProps>`
   /* positioning */
   position: absolute;
-  top: ${({ position }) => position.top};
-  bottom: ${({ position }) => position.bottom};
-  right: ${({ position }) => position.right};
-  left: ${({ position }) => position.left};
+  top: ${({ $position }) => $position.top};
+  bottom: ${({ $position }) => $position.bottom};
+  right: ${({ $position }) => $position.right};
+  left: ${({ $position }) => $position.left};
 
   /* display */
   flex-direction: column;

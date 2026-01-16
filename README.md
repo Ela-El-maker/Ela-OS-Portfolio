@@ -11,7 +11,7 @@ An interactive portfolio website that emulates a desktop operating system experi
 
 ## 🌟 Live Demo
 
-[Visit Ela-OS Portfolio](https://www.feloela.com/)
+[Visit Ela-OS Portfolio](https://ela-os-portfolio.vercel.app/)
 
 ## ✨ Features
 
@@ -68,7 +68,7 @@ An interactive portfolio website that emulates a desktop operating system experi
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/feloela/ela-os-portfolio.git
+   git clone git@github.com:Ela-El-maker/Ela-OS-Portfolio.git
    cd ela-os-portfolio
    ```
 

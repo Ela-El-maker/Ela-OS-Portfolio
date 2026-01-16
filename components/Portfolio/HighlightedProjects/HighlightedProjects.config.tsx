@@ -158,7 +158,7 @@ Leverage: A high-fidelity proof-of-concept that proves technical depth is most p
 
       ],
       slideBgColor: '#4831d4',
-      liveLink: 'https://ela-el-maker.github.io',
+      liveLink: 'https://ela-os-portfolio.vercel.app/',
       githubLink: 'https://github.com/Ela-El-maker/Ela-OS-Portfolio',
       technologyIcons: [
         <SiTypescript key="ts" className="tech-icon" />,
